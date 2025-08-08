@@ -4,6 +4,7 @@ import NewsletterSection from "../components/HomepageSections/NewsletterSection.
 import FooterSection from "../components/HomepageSections/FooterSection.jsx";
 import ExploreSection from "../components/HomepageSections/ExploreSection.jsx";
 import SubscriptionAndToursSection from "../components/HomepageSections/SubscriptionAndToursSection.jsx";
+import Demo from "../components/reusable/Demo.jsx";
 
 const Homepage = () => {
   return (
@@ -12,7 +13,7 @@ const Homepage = () => {
       <ExploreSection />
       <SubscriptionAndToursSection />
       <NewsletterSection />
-      <FooterSection />
+      <Demo />
     </>
   );
 };

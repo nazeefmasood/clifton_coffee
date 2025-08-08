@@ -1,99 +1,75 @@
-import ImageWithHoverEffect from "./ImageWithHoverEffect.jsx";
+import React from "react";
+import Slider from "./Slider";
 
-const Demo = () => {
-  const demoTopContent = () => (
-    <div className="flex items-center justify-center h-full">
-      <div className="bg-black bg-opacity-50 text-white p-4 rounded-lg transform transition-all duration-300 group-hover:scale-110">
-        <h3 className="text-lg font-bold">Hover Content</h3>
-        <p className="text-sm">This appears on top!</p>
-      </div>
-    </div>
-  );
+// dummy data
+const data = [
+  {
+    id: 1,
+    title: "Capsule 1",
+    description: "Rich, bold flavor.",
+    image:
+      "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg?_gl=1*1bpewvt*_ga*MTk2MzE5Mzg1OC4xNzU0NjgyMTAz*_ga_8JE65Q40S6*czE3NTQ2ODIxMDIkbzEkZzEkdDE3NTQ2ODIxMTIkajUwJGwwJGgw",
+  },
+  {
+    id: 2,
+    title: "Capsule 2",
+    description: "Fruity notes.",
+    image:
+      "https://images.pexels.com/photos/19551941/pexels-photo-19551941.jpeg?_gl=1*1tunpo7*_ga*MTk2MzE5Mzg1OC4xNzU0NjgyMTAz*_ga_8JE65Q40S6*czE3NTQ2ODIxMDIkbzEkZzEkdDE3NTQ2ODI2NTQkajMxJGwwJGgw",
+  },
+  {
+    id: 3,
+    title: "Capsule 3",
+    description: "Fruity notes.",
+    image:
+      "https://images.pexels.com/photos/19551941/pexels-photo-19551941.jpeg?_gl=1*1tunpo7*_ga*MTk2MzE5Mzg1OC4xNzU0NjgyMTAz*_ga_8JE65Q40S6*czE3NTQ2ODIxMDIkbzEkZzEkdDE3NTQ2ODI2NTQkajMxJGwwJGgw",
+  },
+  {
+    id: 4,
+    title: "Capsule 4",
+    description: "Chocolatey finish.",
+    image:
+      "https://images.pexels.com/photos/18238050/pexels-photo-18238050.jpeg?_gl=1*504wgr*_ga*MTk2MzE5Mzg1OC4xNzU0NjgyMTAz*_ga_8JE65Q40S6*czE3NTQ2ODIxMDIkbzEkZzEkdDE3NTQ2ODI2NzYkajkkbDAkaDA.",
+  },
+  {
+    id: 5,
+    title: "Capsule 5",
+    description: "Limited edition.",
+    image:
+      "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg?_gl=1*1bpewvt*_ga*MTk2MzE5Mzg1OC4xNzU0NjgyMTAz*_ga_8JE65Q40S6*czE3NTQ2ODIxMDIkbzEkZzEkdDE3NTQ2ODIxMTIkajUwJGwwJGgw",
+  },
+];
 
+export default function SliderDemo() {
   return (
-    <div className="p-8 space-y-8">
-      <h1 className="text-2xl font-bold text-center mb-8">
-        Image Hover Effect Demo
-      </h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* Fade Effect */}
-        <div className="space-y-2">
-          <h3 className="font-semibold text-center">Fade Effect</h3>
-          <div className="h-64 border rounded-lg overflow-hidden">
-            <ImageWithHoverEffect
-              topImage="https://images.pexels.com/photos/33238710/pexels-photo-33238710.jpeg?_gl=1*1msz6gc*_ga*MTc0NDYzNDY4NC4xNzU0NjQ4ODM0*_ga_8JE65Q40S6*czE3NTQ2NDg4MzMkbzEkZzEkdDE3NTQ2NDg4MzkkajU0JGwwJGgw"
-              bottomImage="https://images.pexels.com/photos/31211049/pexels-photo-31211049.jpeg?_gl=1*se6p4s*_ga*MTc0NDYzNDY4NC4xNzU0NjQ4ODM0*_ga_8JE65Q40S6*czE3NTQ2NDg4MzMkbzEkZzEkdDE3NTQ2NDg4ODgkajUkbDAkaDA."
-              topImageAlt="Mountain landscape"
-              bottomImageAlt="Desert landscape"
-              swapOnHover={false}
-              hoverEffect="fade"
-              renderTopContent={() => (
-                <div className="absolute top-4 left-4 bg-white bg-opacity-90 px-3 py-1 rounded">
-                  <span className="text-sm font-medium">Fade</span>
+    <div className="w-screen min-h-screen p-6 overflow-hidden mb-[100vh]">
+      <section className="w-full">
+        <div className="w-full h-[600px] overflow-hidden">
+          <Slider
+            items={data}
+            itemsToShow={1}
+            showArrows={true}
+            translateIn="-x"
+            showPagination={true}
+            paginationLocation="bottom" // Fixed: was "paginationPosition"
+            renderItem={(item) => (
+              <div className="flex  rounded-lg p-6 h-[600px] text-center text-black">
+                <div className="flex-1 w-full h-full mb-4 rounded-lg overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-              )}
-            />
-          </div>
-        </div>
-
-        {/* Slide Up Effect */}
-        <div className="space-y-2">
-          <h3 className="font-semibold text-center">Slide Up Effect</h3>
-          <div className="h-64 border rounded-lg overflow-hidden">
-            <ImageWithHoverEffect
-              topImage="https://images.pexels.com/photos/33238710/pexels-photo-33238710.jpeg?_gl=1*1msz6gc*_ga*MTc0NDYzNDY4NC4xNzU0NjQ4ODM0*_ga_8JE65Q40S6*czE3NTQ2NDg4MzMkbzEkZzEkdDE3NTQ2NDg4MzkkajU0JGwwJGgw"
-              bottomImage="https://images.pexels.com/photos/31211049/pexels-photo-31211049.jpeg?_gl=1*se6p4s*_ga*MTc0NDYzNDY4NC4xNzU0NjQ4ODM0*_ga_8JE65Q40S6*czE3NTQ2NDg4MzMkbzEkZzEkdDE3NTQ2NDg4ODgkajUkbDAkaDA."
-              topImageAlt="Desert landscape"
-              bottomImageAlt="Mountain landscape"
-              hoverEffect="slideUp"
-              renderTopContent={() => (
-                <div className="absolute top-4 left-4 bg-white bg-opacity-90 px-3 py-1 rounded">
-                  <span className="text-sm font-medium">Slide Up</span>
+                <div className="flex-1 flex justify-center items-center flex-col bg-gray-50">
+                  <h3 className="font-semibold text-xl mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-600">{item.description}</p>
                 </div>
-              )}
-            />
-          </div>
-        </div>
-
-        {/* Scale Effect */}
-        <div className="space-y-2">
-          <h3 className="font-semibold text-center">Scale Effect</h3>
-          <div className="h-64 border rounded-lg overflow-hidden">
-            <ImageWithHoverEffect
-              topImage="https://images.pexels.com/photos/33238710/pexels-photo-33238710.jpeg?_gl=1*1msz6gc*_ga*MTc0NDYzNDY4NC4xNzU0NjQ4ODM0*_ga_8JE65Q40S6*czE3NTQ2NDg4MzMkbzEkZzEkdDE3NTQ2NDg4MzkkajU0JGwwJGgw"
-              bottomImage="https://images.pexels.com/photos/31211049/pexels-photo-31211049.jpeg?_gl=1*se6p4s*_ga*MTc0NDYzNDY4NC4xNzU0NjQ4ODM0*_ga_8JE65Q40S6*czE3NTQ2NDg4MzMkbzEkZzEkdDE3NTQ2NDg4ODgkajUkbDAkaDA."
-              topImageAlt="Mountain landscape"
-              bottomImageAlt="Desert landscape"
-              hoverEffect="scale"
-              renderTopContent={() => (
-                <div className="absolute top-4 left-4 bg-white bg-opacity-90 px-3 py-1 rounded">
-                  <span className="text-sm font-medium">Scale</span>
-                </div>
-              )}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Custom Content Example */}
-      <div className="space-y-2">
-        <h3 className="font-semibold text-center">
-          With Custom Overlay Content
-        </h3>
-        <div className="h-80 max-w-md mx-auto border rounded-lg overflow-hidden">
-          <ImageWithHoverEffect
-            topImage="https://images.pexels.com/photos/33238710/pexels-photo-33238710.jpeg?_gl=1*1msz6gc*_ga*MTc0NDYzNDY4NC4xNzU0NjQ4ODM0*_ga_8JE65Q40S6*czE3NTQ2NDg4MzMkbzEkZzEkdDE3NTQ2NDg4MzkkajU0JGwwJGgw"
-            bottomImage="https://images.pexels.com/photos/31211049/pexels-photo-31211049.jpeg?_gl=1*se6p4s*_ga*MTc0NDYzNDY4NC4xNzU0NjQ4ODM0*_ga_8JE65Q40S6*czE3NTQ2NDg4MzMkbzEkZzEkdDE3NTQ2NDg4ODgkajUkbDAkaDA."
-            topImageAlt="Mountain landscape"
-            bottomImageAlt="Desert landscape"
-            hoverEffect="fade"
-            renderTopContent={demoTopContent}
+              </div>
+            )}
           />
         </div>
-      </div>
+      </section>
     </div>
   );
-};
-
-export default Demo;
+}
