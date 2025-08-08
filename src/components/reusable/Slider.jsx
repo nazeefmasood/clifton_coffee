@@ -46,8 +46,26 @@ const Slider = ({
 
   const isVertical = translateIn === "-y";
 
+  const getContainerClasses = () => {
+    if (paginationLocation === "left" || paginationLocation === "right") {
+      return "flex w-full h-full relative";
+    }
+    return "flex flex-col gap-3 w-full h-full";
+  };
+  const getPaginationClasses = () => {
+    switch (paginationLocation) {
+      case "top":
+        return "order-first";
+      case "left":
+        return "flex-col absolute left-2 top-1/2 transform -translate-y-1/2";
+      case "right":
+        return "flex-col absolute right-2 top-1/2 transform -translate-y-1/2";
+      default:
+        return "";
+    }
+  };
   return (
-    <div className="flex flex-col gap-3 w-full h-full">
+    <div className={getContainerClasses()}>
       {/* Slider container with relative positioning for absolute arrows */}
       <div className="w-full h-full overflow-hidden relative">
         <div
@@ -130,9 +148,7 @@ const Slider = ({
       {/* Pagination dots */}
       {showPagination && (
         <div
-          className={`flex gap-2 justify-center items-center flex-shrink-0 ${
-            paginationLocation === "top" ? "order-first" : ""
-          }`}
+          className={`flex gap-2 justify-center items-center flex-shrink-0 z-30  ${getPaginationClasses()}`}
         >
           {items.map((_, idx) => (
             <div

@@ -48,10 +48,10 @@ export default function SliderDemo() {
           <Slider
             items={data}
             itemsToShow={1}
-            showArrows={true}
-            translateIn="-x"
+            showArrows={false}
+            translateIn="-y"
             showPagination={true}
-            paginationLocation="bottom" // Fixed: was "paginationPosition"
+            paginationLocation="right" // Fixed: was "paginationPosition"
             renderItem={(item) => (
               <div className="flex  rounded-lg p-6 h-[600px] text-center text-black">
                 <div className="flex-1 w-full h-full mb-4 rounded-lg overflow-hidden">
