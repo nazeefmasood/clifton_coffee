@@ -14,7 +14,7 @@ const ImageWithHoverEffect = ({
   }
 
   return (
-    <div className="w-full h-full relative group overflow-hidden">
+    <div className="w-full h-full relative group overflow-hidden bg-amber-700">
       {swapOnHover && bottomImage && topImage ? (
         <>
           {/* Bottom image */}
@@ -38,7 +38,7 @@ const ImageWithHoverEffect = ({
         <img
           src={topImage || bottomImage}
           alt={altTop || altBottom}
-          className="absolute inset-0 z-10 object-contain scale-100 transition-transform duration-500 ease-in-out group-hover:scale-105"
+          className="w-full h-full z-10 object-fill scale-100  "
           loading="lazy"
         />
       )}
