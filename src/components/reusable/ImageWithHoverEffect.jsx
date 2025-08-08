@@ -38,14 +38,14 @@ const ImageWithHoverEffect = ({
         <img
           src={topImage || bottomImage}
           alt={altTop || altBottom}
-          className="w-full h-full z-10 object-fill scale-100  "
+          className="w-full h-full z-10 object-cover scale-100  "
           loading="lazy"
         />
       )}
 
       {/* Optional overlay content */}
       {typeof renderTopContent === "function" && (
-        <div className="absolute inset-0 z-30 pointer-events-none">
+        <div className="absolute inset-0 z-30 ">
           {renderTopContent()}
         </div>
       )}
