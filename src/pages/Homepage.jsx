@@ -5,15 +5,19 @@ import FooterSection from "../components/HomepageSections/FooterSection.jsx";
 import ExploreSection from "../components/HomepageSections/ExploreSection.jsx";
 import SubscriptionAndToursSection from "../components/HomepageSections/SubscriptionAndToursSection.jsx";
 import Demo from "../components/reusable/Demo.jsx";
+import OurCollectionSection from "../components/HomepageSections/OurCollectionSection.jsx";
+import TestimoninalsSection from "../components/HomepageSections/TestimoninalsSection.jsx";
 
 const Homepage = () => {
   return (
     <>
       <HeroSection />
+      <OurCollectionSection />
       <ExploreSection />
       <SubscriptionAndToursSection />
+      <TestimoninalsSection />
       <NewsletterSection />
-      <Demo />
+      <FooterSection />
     </>
   );
 };

@@ -52,9 +52,9 @@ const SubscriptionAndToursSection = () => {
           <p className="text-[18px] text-center">
             Come and have a walk through our HQ, take a look at our roastery,
             training room, showrooms, cupping room and engineering bay!A little
-            bit on Future Virtual Ltd – We are a Brighton & Bristol based family
+            bit on Future Virtual-Ltd We are a Brighton & Bristol based family
             business, covering the whole of the UK. We are leading the way in
-            creating stunning, fully immersive & interactive 360 virtual tours
+            creating stunning, fully immersive & interactive 360 virtual tours
             across all industries such as business.
           </p>
 

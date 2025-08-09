@@ -44,23 +44,18 @@ export default function SliderDemo() {
   return (
     <div className="w-screen min-h-screen p-6 overflow-hidden mb-[100vh]">
       <section className="w-full">
-        <div className="w-full h-[600px] overflow-hidden">
+        <div className="w-full h-[800px] overflow-hidden">
           <Slider
             items={data}
             itemsToShow={1}
             showArrows={false}
             translateIn="-y"
             showPagination={true}
-            paginationLocation="right" // Fixed: was "paginationPosition"
+            paginationLocation="right"
+            showPartialNext={true}
+            partialNextPercent={0.4} // Show 15% of next item
             renderItem={(item) => (
-              <div className="flex  rounded-lg p-6 h-[600px] text-center text-black">
-                <div className="flex-1 w-full h-full mb-4 rounded-lg overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+              <div className="flex rounded-lg p-6 h-full text-center text-black">
                 <div className="flex-1 flex justify-center items-center flex-col bg-gray-50">
                   <h3 className="font-semibold text-xl mb-2">{item.title}</h3>
                   <p className="text-sm text-gray-600">{item.description}</p>

@@ -21,7 +21,7 @@ const ImageWithHoverEffect = ({
           <img
             src={bottomImage}
             alt={altBottom}
-            className="absolute inset-0 z-10 object-contain opacity-100 scale-100 transition-all duration-500 ease-in-out group-hover:opacity-0 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full z-10 object-cover opacity-100 scale-100 transition-all duration-500 ease-in-out group-hover:opacity-0 group-hover:scale-105"
             loading="lazy"
           />
 
@@ -29,7 +29,7 @@ const ImageWithHoverEffect = ({
           <img
             src={topImage}
             alt={altTop}
-            className="absolute inset-0 z-20 object-contain opacity-0 scale-100 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full z-20 object-cover opacity-0 scale-100 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:scale-105"
             loading="lazy"
           />
         </>
@@ -38,19 +38,16 @@ const ImageWithHoverEffect = ({
         <img
           src={topImage || bottomImage}
           alt={altTop || altBottom}
-          className="w-full h-full z-10 object-cover scale-100  "
+          className="absolute inset-0 w-full h-full z-10 object-cover scale-100"
           loading="lazy"
         />
       )}
 
       {/* Optional overlay content */}
       {typeof renderTopContent === "function" && (
-        <div className="absolute inset-0 z-30 ">
-          {renderTopContent()}
-        </div>
+        <div className="absolute inset-0 z-30">{renderTopContent()}</div>
       )}
     </div>
   );
 };
-
-export default ImageWithHoverEffect;
+export default ImageWithHoverEffect

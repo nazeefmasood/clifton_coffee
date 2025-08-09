@@ -11,7 +11,8 @@ const Slider = ({
   itemsToShow = 3,
   showPagination = true,
   paginationLocation = "bottom",
-  showNextItem = false,
+  showPartialNext = false,
+  partialNextPercent = 0.2,
   translateIn = "-x",
   showArrows = false,
   renderItem,
@@ -50,8 +51,9 @@ const Slider = ({
     if (paginationLocation === "left" || paginationLocation === "right") {
       return "flex w-full h-full relative";
     }
-    return "flex flex-col gap-3 w-full h-full";
+    return "flex flex-col gap-3 w-full h-full ";
   };
+
   const getPaginationClasses = () => {
     switch (paginationLocation) {
       case "top":
@@ -64,42 +66,61 @@ const Slider = ({
         return "";
     }
   };
+
+  const getTransformValue = () => {
+    if (showPartialNext) {
+      const partialOffset = partialNextPercent / items.length;
+
+      if (isVertical) {
+        return `translateY(-${
+          (currentIndex * 100) / items.length - partialOffset * 100
+        }%)`;
+      } else {
+        return `translateX(-${
+          (currentIndex * 100) / items.length - partialOffset * 100
+        }%)`;
+      }
+    }
+
+    if (isVertical) {
+      return `translateY(-${(currentIndex * 100) / items.length}%)`;
+    } else {
+      return `translateX(-${(currentIndex * 100) / items.length}%)`;
+    }
+  };
+
   return (
     <div className={getContainerClasses()}>
       {/* Slider container with relative positioning for absolute arrows */}
-      <div className="w-full h-full overflow-hidden relative">
+      <div className="w-full h-full overflow-hidden relative px-10">
         <div
           className={`${
             isVertical ? "flex flex-col h-full" : "flex"
-          } transition-transform duration-300 ease-in-out`}
+          } transition-transform duration-300 ease-in-out `}
           style={
             isVertical
               ? {
                   height: `${items.length * 100}%`,
-                  transform: `translateY(-${
-                    (currentIndex * 100) / items.length
-                  }%)`,
+                  transform: getTransformValue(),
                 }
               : {
                   width: `${(items.length * 100) / itemsToShowNum}%`,
-                  transform: `translateX(-${
-                    (currentIndex * 100) / items.length
-                  }%)`,
+                  transform: getTransformValue(),
                 }
           }
         >
           {items.map((item, idx) => (
             <div
               key={idx}
-              className="flex-shrink-0"
-              style={
-                isVertical
+              className="flex-shrink-0 transition-opacity duration-300 "
+              style={{
+                ...(isVertical
                   ? { height: `${100 / items.length}%` }
-                  : { width: `${100 / items.length}%` }
-              }
+                  : { width: `${100 / items.length }%` }),
+              }}
             >
-              <div className={isVertical ? "py-1.5 h-full" : "px-1.5"}>
-                {renderItem(item)}
+              <div className={isVertical ? "py-1.5 h-full" : "pl-8"}>
+                {renderItem(item, idx === currentIndex)}
               </div>
             </div>
           ))}
@@ -148,7 +169,7 @@ const Slider = ({
       {/* Pagination dots */}
       {showPagination && (
         <div
-          className={`flex gap-2 justify-center items-center flex-shrink-0 z-30  ${getPaginationClasses()}`}
+          className={`flex gap-2 justify-center items-center flex-shrink-0 z-30 ${getPaginationClasses()} `}
         >
           {items.map((_, idx) => (
             <div
