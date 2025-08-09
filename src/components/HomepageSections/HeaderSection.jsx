@@ -41,7 +41,7 @@ const HeaderSection = () => {
   };
 
   return (
-    <div className="relative z-50">
+    <div className="relative z-50 ">
       {/* Announcement Bar */}
       <div className="bg-black text-white flex justify-center items-center py-3">
         <p className="text-sm font-medium">

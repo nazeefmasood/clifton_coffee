@@ -7,18 +7,21 @@ import SubscriptionAndToursSection from "../components/HomepageSections/Subscrip
 import Demo from "../components/reusable/Demo.jsx";
 import OurCollectionSection from "../components/HomepageSections/OurCollectionSection.jsx";
 import TestimoninalsSection from "../components/HomepageSections/TestimoninalsSection.jsx";
+import NewProductsSection from "../components/HomepageSections/NewProductsSection.jsx";
 
 const Homepage = () => {
   return (
-    <>
+    <div>
       <HeroSection />
       <OurCollectionSection />
+      <NewProductsSection />
       <ExploreSection />
+
       <SubscriptionAndToursSection />
       <TestimoninalsSection />
       <NewsletterSection />
       <FooterSection />
-    </>
+    </div>
   );
 };
 
