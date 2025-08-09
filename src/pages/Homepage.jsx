@@ -13,7 +13,7 @@ import SocialMediaSection from "../components/HomepageSections/SocialMediaSectio
 
 const Homepage = () => {
   return (
-    <div>
+    <>
       <HeroSection />
       <OurCollectionSection />
       <NewProductsSection />
@@ -24,7 +24,7 @@ const Homepage = () => {
       <SocialMediaSection />
       <NewsletterSection />
       <FooterSection />
-    </div>
+    </>
   );
 };
 

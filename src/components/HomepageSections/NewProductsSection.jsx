@@ -20,12 +20,12 @@ const Collage = ({ images }) => {
   };
 
   return (
-    <div className={`grid ${getCollageLayout()}  h-full `}>
+    <div className={`grid ${getCollageLayout()} gap-1 sm:gap-2 h-full`}>
       {images.slice(0, 4).map((image, index) => (
         <div
           key={index}
           className={`
-            relative overflow-hidden 
+            relative overflow-hidden rounded-lg
             ${images.length === 3 && index === 0 ? "row-span-2" : ""}
           `}
         >
@@ -44,7 +44,7 @@ const Collage = ({ images }) => {
 const NewProductsSection = () => {
   const [activeTab, setActiveTab] = useState("Coffee");
 
-  // Dummy data for different categories
+  // Your existing data
   const data = {
     Coffee: {
       collageImages: [
@@ -105,6 +105,8 @@ const NewProductsSection = () => {
           description:
             "Bold and robust flavor profile perfect for espresso lovers who enjoy a strong kick.",
           price: "8.50",
+          image:
+            "https://images.pexels.com/photos/19551941/pexels-photo-19551941.jpeg",
         },
         {
           id: 2,
@@ -112,6 +114,8 @@ const NewProductsSection = () => {
           description:
             "Balanced and mellow taste with subtle notes of caramel and nuts.",
           price: "8.50",
+          image:
+            "https://images.pexels.com/photos/18238050/pexels-photo-18238050.jpeg",
         },
         {
           id: 3,
@@ -119,6 +123,8 @@ const NewProductsSection = () => {
           description:
             "All the flavor without the caffeine, perfect for evening enjoyment.",
           price: "9.50",
+          image:
+            "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
         },
       ],
     },
@@ -133,6 +139,8 @@ const NewProductsSection = () => {
           description:
             "A curated selection of our most popular coffees and capsules for beginners.",
           price: "25.00",
+          image:
+            "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
         },
         {
           id: 2,
@@ -140,6 +148,8 @@ const NewProductsSection = () => {
           description:
             "Our finest selection including rare single origins and exclusive blends.",
           price: "45.00",
+          image:
+            "https://images.pexels.com/photos/19551941/pexels-photo-19551941.jpeg",
         },
         {
           id: 3,
@@ -147,6 +157,8 @@ const NewProductsSection = () => {
           description:
             "Get fresh coffee delivered monthly with our flexible subscription service.",
           price: "30.00",
+          image:
+            "https://images.pexels.com/photos/18238050/pexels-photo-18238050.jpeg",
         },
         {
           id: 4,
@@ -154,6 +166,8 @@ const NewProductsSection = () => {
           description:
             "Beautiful packaging with a variety of our best products, perfect for gifting.",
           price: "35.00",
+          image:
+            "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
         },
         {
           id: 5,
@@ -161,6 +175,8 @@ const NewProductsSection = () => {
           description:
             "Everything you need to make cafe-quality drinks at home.",
           price: "55.00",
+          image:
+            "https://images.pexels.com/photos/19551941/pexels-photo-19551941.jpeg",
         },
       ],
     },
@@ -169,58 +185,119 @@ const NewProductsSection = () => {
   const tabs = ["Coffee", "Capsule", "All"];
 
   return (
-    <div className="flex flex-col mt-10 gap-10 overflow-hidden">
-      <div>
-        <h2 className="text-[70px] text-center">New Products</h2>
-        <p className="text-[18px] text-center">
+    <div
+      className="flex flex-col px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-8 sm:py-12 lg:py-16 gap-8 sm:gap-10 lg:gap-12 overflow-hidden"
+      style={{ fontFamily: "var(--font-barlow)" }}
+    >
+      {/* Header Section */}
+      <div className="text-center space-y-4">
+        <h2
+          className="font-bold text-gray-900"
+          style={{
+            fontSize: "var(--text-70)",
+            lineHeight: "1.1",
+          }}
+        >
+          New Products
+        </h2>
+        <p
+          className="font-normal text-gray-600 max-w-2xl mx-auto"
+          style={{
+            fontSize: "var(--text-25)",
+            lineHeight: "1.4",
+          }}
+        >
           Discover our premium coffee collections crafted for every taste!
         </p>
       </div>
-      <div className="flex p-8 h-[800px] gap-3">
+
+      {/* Main Content */}
+      <div className="flex flex-col xl:flex-row gap-6 lg:gap-8 xl:gap-12">
+        {/* Collage Section */}
         <div className="flex-1 w-full">
-          <div className="h-full rounded-2xl overflow-hidden">
+          <div className="h-64 sm:h-80 lg:h-96 xl:h-[600px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg">
             <Collage images={data[activeTab].collageImages} />
           </div>
         </div>
+
+        {/* Products Section */}
         <div className="flex-1 flex flex-col">
           {/* Tab Navigation */}
-          <div className="flex  gap-4 mb-8 justify-start">
+          <div className="flex flex-wrap sm:flex-nowrap gap-3 sm:gap-4 mb-6 sm:mb-8 lg:mb-10 justify-center xl:justify-start">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                  activeTab === tab
-                    ? "bg-black text-white"
-                    : "bg-gray-200 text-gray-600 hover:bg-gray-300"
-                }`}
+                className={`
+                  font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-full 
+                  transition-all duration-300 transform hover:scale-105
+                  ${
+                    activeTab === tab
+                      ? "bg-gray-900 text-white shadow-lg"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md"
+                  }
+                `}
+                style={{
+                  fontSize: "var(--text-18)",
+                  fontFamily: "var(--font-barlow)",
+                }}
               >
                 {tab}
               </button>
             ))}
           </div>
-          <div className="flex-1 h-[600px]">
+
+          {/* Products Slider */}
+          <div className="flex-1 h-auto xl:h-[500px] relative">
             <Slider
               items={data[activeTab].products}
-              itemsToShow={2}
+              itemsToShow={window.innerWidth >= 1280 ? 2 : 1}
               showPagination={false}
               showArrows={true}
               renderItem={(item) => (
-                <div
-                  className={`bg-white rounded-xl flex flex-col transition-all duration-300 w-full h-full overflow-hidden`}
-                >
-                  <div className=" w-full h-[400px] overflow-hidden">
+                <div className="flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden h-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  {/* Product Image */}
+                  <div className="w-full h-48 sm:h-56 lg:h-64 xl:h-72 overflow-hidden">
                     <img
                       src={item.image}
-                      className="w-full h-full block object-cover"
+                      alt={item.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="w-full h-[200px] bg-gray-200 flex flex-col justify-top items-center p-4">
-                    <h3 className="text-[25px]">{item.title}</h3>
-                    <p className="text-[18px] text-center">
-                      {item.description}
-                    </p>
-                    <p className="text-[18px]">{item.price}</p>
+
+                  {/* Product Info */}
+                  <div className="flex-1 bg-gray-50 p-4 sm:p-6 flex flex-col justify-between">
+                    <div className="space-y-3">
+                      <h3
+                        className="font-semibold text-gray-900 text-center"
+                        style={{
+                          fontSize: "var(--text-25)",
+                          fontFamily: "var(--font-barlow)",
+                        }}
+                      >
+                        {item.title}
+                      </h3>
+                      <p
+                        className="font-normal text-gray-600 text-center leading-relaxed"
+                        style={{
+                          fontSize: "var(--text-18)",
+                          fontFamily: "var(--font-barlow)",
+                        }}
+                      >
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-gray-200">
+                      <p
+                        className="font-medium text-gray-900 text-center"
+                        style={{
+                          fontSize: "var(--text-25)",
+                          fontFamily: "var(--font-barlow)",
+                        }}
+                      >
+                        ${item.price}
+                      </p>
+                    </div>
                   </div>
                 </div>
               )}

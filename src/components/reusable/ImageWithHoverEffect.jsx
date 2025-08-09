@@ -14,7 +14,10 @@ const ImageWithHoverEffect = ({
   }
 
   return (
-    <div className="w-full h-full relative group overflow-hidden ">
+    <div
+      className="w-full h-full relative group overflow-hidden"
+      style={{ fontFamily: "Barlow, sans-serif" }}
+    >
       {swapOnHover && bottomImage && topImage ? (
         <>
           {/* Bottom image */}
@@ -34,20 +37,27 @@ const ImageWithHoverEffect = ({
           />
         </>
       ) : (
-        // Single image mode (no hover swap)
+        // Single image mode (no hover swap) - Enhanced responsiveness
         <img
           src={topImage || bottomImage}
           alt={altTop || altBottom}
-          className="absolute inset-0 w-full h-full z-10 object-cover scale-100"
+          className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+          style={{
+            maxWidth: "100%",
+            maxHeight: "100%",
+          }}
           loading="lazy"
         />
       )}
 
-      {/* Optional overlay content */}
+      {/* Optional overlay content - Enhanced for mobile responsiveness */}
       {typeof renderTopContent === "function" && (
-        <div className="absolute inset-0 z-30">{renderTopContent()}</div>
+        <div className="absolute inset-0 z-30 flex items-center justify-center">
+          <div className="w-full h-full">{renderTopContent()}</div>
+        </div>
       )}
     </div>
   );
 };
-export default ImageWithHoverEffect
+
+export default ImageWithHoverEffect;
