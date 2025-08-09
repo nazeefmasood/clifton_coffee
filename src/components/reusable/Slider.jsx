@@ -95,7 +95,7 @@ const Slider = ({
   // Memoize item opacity and visibility logic
   const getItemOpacity = useCallback(
     (itemIndex) => {
-      if (!showPartialNext) {
+      if (showPartialNext === false) {
         return 1; // Full opacity for all visible items
       }
 

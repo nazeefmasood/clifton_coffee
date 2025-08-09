@@ -8,6 +8,8 @@ import Demo from "../components/reusable/Demo.jsx";
 import OurCollectionSection from "../components/HomepageSections/OurCollectionSection.jsx";
 import TestimoninalsSection from "../components/HomepageSections/TestimoninalsSection.jsx";
 import NewProductsSection from "../components/HomepageSections/NewProductsSection.jsx";
+import OurFavouritesSection from "../components/HomepageSections/OurFavouritesSection.jsx";
+import SocialMediaSection from "../components/HomepageSections/SocialMediaSection.jsx";
 
 const Homepage = () => {
   return (
@@ -16,9 +18,10 @@ const Homepage = () => {
       <OurCollectionSection />
       <NewProductsSection />
       <ExploreSection />
-
+      <OurFavouritesSection />
       <SubscriptionAndToursSection />
       <TestimoninalsSection />
+      <SocialMediaSection />
       <NewsletterSection />
       <FooterSection />
     </div>
