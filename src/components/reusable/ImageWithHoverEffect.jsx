@@ -14,7 +14,7 @@ const ImageWithHoverEffect = ({
   }
 
   return (
-    <div className="w-full h-full relative group overflow-hidden bg-amber-700">
+    <div className="w-full h-full relative group overflow-hidden ">
       {swapOnHover && bottomImage && topImage ? (
         <>
           {/* Bottom image */}
