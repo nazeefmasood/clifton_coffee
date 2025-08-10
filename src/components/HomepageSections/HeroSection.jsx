@@ -11,10 +11,10 @@ const HeroSection = () => {
       {/* Background Video */}
 
       <video
-        autoPlay="autoplay"
-        loop="true"
-        muted="true"
-        playsInLine="playsinline"
+        autoPlay
+        muted
+        loop
+        playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         poster={Poster}
       >
