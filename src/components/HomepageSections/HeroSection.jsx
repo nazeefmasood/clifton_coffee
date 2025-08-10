@@ -1,6 +1,7 @@
 import React from "react";
 import HeaderSection from "./HeaderSection.jsx";
 import BG_Video from "../../assets/videos/bg_video.mp4";
+import Button from "../reusable/Button.jsx";
 
 const HeroSection = () => {
   return (
@@ -36,22 +37,23 @@ const HeroSection = () => {
           {/* Main Heading */}
           <div className="mb-6 sm:mb-8 lg:mb-12">
             <h1
-              className="font-bold leading-tight text-white mb-4 sm:mb-6 lg:mb-8"
-              style={{ fontSize: "var(--text-70)" }}
+              className="font-normal leading-tight text-white mb-4 sm:mb-6 lg:mb-8"
+              style={{ fontSize: "var(--text-91)" }}
             >
               Bold Coffee Moments
             </h1>
           </div>
 
-          {/* Call to Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8 sm:mb-12 lg:mb-16">
-            <button
-              className="w-full sm:w-auto border-2 border-white text-white px-8 py-4 font-semibold rounded-none hover:bg-white hover:text-black transition-all duration-300"
-              style={{ fontSize: "var(--text-18)" }}
-            >
-              Learn More
-            </button>
-          </div>
+          <Button
+            bg="bg-transparent"
+            hoverBg="hover:bg-black"
+            border="border-white"
+            hoverBorder="hover:border-black"
+            textColor="text-white"
+            hoverTextColor="hover:text-white"
+            paddingX={"px-10"}
+            paddingY="py-3"
+          />
         </div>
       </div>
     </div>

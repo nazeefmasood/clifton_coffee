@@ -1,6 +1,23 @@
 import { useState } from "react";
 import Slider from "../reusable/Slider";
 
+import Coffee_Product_Collage_1 from "../../assets/images/newproducts/coffee_1.png";
+import Coffee_Product_Collage_2 from "../../assets/images/newproducts/coffee_2.jpg";
+import Coffee_Product_Collage_3 from "../../assets/images/newproducts/coffee_3.jpg";
+import Coffee_Product_Collage_4 from "../../assets/images/newproducts/coffee_4.jpg";
+import Capsule_Product_Collage_1 from "../../assets/images/newproducts/capsule_1.jpg";
+
+import P_1 from "../../assets/images/products/product_1.jpg";
+import P_2 from "../../assets/images/products/product_2.jpg";
+import P_3 from "../../assets/images/products/product_3.jpg";
+import P_4 from "../../assets/images/products/product_4.jpg";
+import P_5 from "../../assets/images/products/product_5.jpg";
+import P_6 from "../../assets/images/products/product_6.jpg";
+import P_7 from "../../assets/images/products/product_5.jpg";
+import P_8 from "../../assets/images/products/product_4.jpg";
+import P_9 from "../../assets/images/products/product_3.jpg";
+import P_10 from "../../assets/images/products/product_2.jpg";
+
 const Collage = ({ images }) => {
   if (!images || images.length === 0) return null;
 
@@ -25,15 +42,25 @@ const Collage = ({ images }) => {
         <div
           key={index}
           className={`
-            relative overflow-hidden rounded-lg
+            relative overflow-hidden rounded-lg bg-gray-200 group
             ${images.length === 3 && index === 0 ? "row-span-2" : ""}
           `}
         >
           <img
             src={image}
             alt={`Collage image ${index + 1}`}
-            className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+            className="absolute inset-0 z-20 w-full h-full object-cover object-center hover:scale-110 transition-transform duration-300"
+            style={{
+              minWidth: "100%",
+              minHeight: "100%",
+            }}
+            loading="lazy"
           />
+          <div className="absolute inset-0 bg-black/50 z-10 group-hover:z-30 flex justify-center items-center">
+            <p className="text-white hover:underline text-16 underline-offset-4 cursor-pointer">
+              View More
+            </p>
+          </div>
         </div>
       ))}
     </div>
@@ -44,14 +71,13 @@ const Collage = ({ images }) => {
 const NewProductsSection = () => {
   const [activeTab, setActiveTab] = useState("Coffee");
 
-  // Your existing data
   const data = {
     Coffee: {
       collageImages: [
-        "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
-        "https://images.pexels.com/photos/19551941/pexels-photo-19551941.jpeg",
-        "https://images.pexels.com/photos/18238050/pexels-photo-18238050.jpeg",
-        "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
+        Coffee_Product_Collage_1,
+        Coffee_Product_Collage_2,
+        Coffee_Product_Collage_3,
+        Coffee_Product_Collage_4,
       ],
       products: [
         {
@@ -60,8 +86,7 @@ const NewProductsSection = () => {
           description:
             "Introducing El Vergel Estate, a vibrant new coffee from the Bayter family's innovative farm in Fresno, Tolima. This Red and Yellow Caturra variety.",
           price: "13.50",
-          image:
-            "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
+          image: P_1,
         },
         {
           id: 2,
@@ -69,8 +94,7 @@ const NewProductsSection = () => {
           description:
             "Introducing El Vergel Estate, a vibrant new coffee from the Bayter family's innovative farm in Fresno, Tolima. This Red and Yellow Caturra variety.",
           price: "13.50",
-          image:
-            "https://images.pexels.com/photos/19551941/pexels-photo-19551941.jpeg",
+          image: P_2,
         },
         {
           id: 3,
@@ -78,26 +102,12 @@ const NewProductsSection = () => {
           description:
             "Rich and full-bodied coffee with chocolate undertones from the highlands of Colombia.",
           price: "15.50",
-          image:
-            "https://images.pexels.com/photos/18238050/pexels-photo-18238050.jpeg",
-        },
-        {
-          id: 4,
-          title: "Ethiopian Coffee",
-          description:
-            "Bright and floral coffee with citrus notes from the birthplace of coffee.",
-          price: "14.50",
-          image:
-            "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
+          image: P_4,
         },
       ],
     },
     Capsule: {
-      collageImages: [
-        "https://images.pexels.com/photos/19551941/pexels-photo-19551941.jpeg",
-        "https://images.pexels.com/photos/18238050/pexels-photo-18238050.jpeg",
-        "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
-      ],
+      collageImages: [Capsule_Product_Collage_1],
       products: [
         {
           id: 1,
@@ -105,8 +115,7 @@ const NewProductsSection = () => {
           description:
             "Bold and robust flavor profile perfect for espresso lovers who enjoy a strong kick.",
           price: "8.50",
-          image:
-            "https://images.pexels.com/photos/19551941/pexels-photo-19551941.jpeg",
+          image: P_3,
         },
         {
           id: 2,
@@ -114,8 +123,7 @@ const NewProductsSection = () => {
           description:
             "Balanced and mellow taste with subtle notes of caramel and nuts.",
           price: "8.50",
-          image:
-            "https://images.pexels.com/photos/18238050/pexels-photo-18238050.jpeg",
+          image: P_5,
         },
         {
           id: 3,
@@ -123,14 +131,15 @@ const NewProductsSection = () => {
           description:
             "All the flavor without the caffeine, perfect for evening enjoyment.",
           price: "9.50",
-          image:
-            "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
+          image: P_2,
         },
       ],
     },
     All: {
       collageImages: [
-        "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
+        Capsule_Product_Collage_1,
+        Coffee_Product_Collage_2,
+        Coffee_Product_Collage_4,
       ],
       products: [
         {
@@ -139,8 +148,7 @@ const NewProductsSection = () => {
           description:
             "A curated selection of our most popular coffees and capsules for beginners.",
           price: "25.00",
-          image:
-            "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
+          image: P_10,
         },
         {
           id: 2,
@@ -148,8 +156,7 @@ const NewProductsSection = () => {
           description:
             "Our finest selection including rare single origins and exclusive blends.",
           price: "45.00",
-          image:
-            "https://images.pexels.com/photos/19551941/pexels-photo-19551941.jpeg",
+          image: P_6,
         },
         {
           id: 3,
@@ -157,26 +164,7 @@ const NewProductsSection = () => {
           description:
             "Get fresh coffee delivered monthly with our flexible subscription service.",
           price: "30.00",
-          image:
-            "https://images.pexels.com/photos/18238050/pexels-photo-18238050.jpeg",
-        },
-        {
-          id: 4,
-          title: "Gift Set",
-          description:
-            "Beautiful packaging with a variety of our best products, perfect for gifting.",
-          price: "35.00",
-          image:
-            "https://images.pexels.com/photos/3174435/pexels-photo-3174435.jpeg",
-        },
-        {
-          id: 5,
-          title: "Barista Kit",
-          description:
-            "Everything you need to make cafe-quality drinks at home.",
-          price: "55.00",
-          image:
-            "https://images.pexels.com/photos/19551941/pexels-photo-19551941.jpeg",
+          image: P_7,
         },
       ],
     },
@@ -215,7 +203,7 @@ const NewProductsSection = () => {
       <div className="flex flex-col xl:flex-row gap-6 lg:gap-8 xl:gap-12">
         {/* Collage Section */}
         <div className="flex-1 w-full">
-          <div className="h-64 sm:h-80 lg:h-96 xl:h-[600px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg">
+          <div className="h-80 sm:h-96 lg:h-[800px] xl:h-[800px] rounded-2xl lg:rounded-3xl overflow-hidden bg-gray-100">
             <Collage images={data[activeTab].collageImages} />
           </div>
         </div>
@@ -229,12 +217,12 @@ const NewProductsSection = () => {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`
-                  font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-full 
+                  font-medium px-6 sm:px-8 py-2 sm:py-3 rounded-full 
                   transition-all duration-300 transform hover:scale-105
                   ${
                     activeTab === tab
-                      ? "bg-gray-900 text-white shadow-lg"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md"
+                      ? "bg-black text-white"
+                      : "bg-transparent border  text-gray-700 hover:bg-black hover:text-white "
                   }
                 `}
                 style={{
@@ -248,59 +236,88 @@ const NewProductsSection = () => {
           </div>
 
           {/* Products Slider */}
-          <div className="flex-1 h-auto xl:h-[500px] relative">
+          <div className="flex-1 h-max xl:h-[500px] relative">
             <Slider
               items={data[activeTab].products}
-              itemsToShow={window.innerWidth >= 1280 ? 2 : 1}
+              itemsToShow={2}
+              itemsToShowMobile={1}
+              itemsToShowTablet={2}
               showPagination={false}
               showArrows={true}
-              renderItem={(item) => (
-                <div className="flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden h-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  {/* Product Image */}
-                  <div className="w-full h-48 sm:h-56 lg:h-64 xl:h-72 overflow-hidden">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
+              renderItem={(item, index) => {
+                // Define background colors for variety
+                const bgColors = [
+                  "bg-[#D6DBDA]", // Light green-gray
+                  "bg-[#D3D3CB]", // Warm light green-beige
+                  "bg-[#E6E4DF]", // Soft cream-gray
+                  "bg-[#C9D0CE]", // Muted seafoam gray
+                  "bg-[#BFC5C3]", // Gentle stone gray
+                  "bg-[#E0DDD5]", // Light sand beige
+                  "bg-[#DADFD6]", // Pale sage-gray
+                  "bg-[#F0EEE9]", // Off-white warm tone
+                ];
+                const bgColor = bgColors[index % bgColors.length];
 
-                  {/* Product Info */}
-                  <div className="flex-1 bg-gray-50 p-4 sm:p-6 flex flex-col justify-between">
-                    <div className="space-y-3">
-                      <h3
-                        className="font-semibold text-gray-900 text-center"
-                        style={{
-                          fontSize: "var(--text-25)",
-                          fontFamily: "var(--font-barlow)",
-                        }}
-                      >
-                        {item.title}
-                      </h3>
-                      <p
-                        className="font-normal text-gray-600 text-center leading-relaxed"
-                        style={{
-                          fontSize: "var(--text-18)",
-                          fontFamily: "var(--font-barlow)",
-                        }}
-                      >
-                        {item.description}
-                      </p>
+                return (
+                  <div className="group flex flex-col rounded-3xl overflow-hidden h-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
+                    {/* Product Image with colored background */}
+                    <div
+                      className={`relative w-full sm:h-32 lg:h-72 xl:h-91 overflow-hidden  flex items-center justify-center`}
+                    >
+                      <div className="relative w-full h-full ">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-center aspect-4/4 transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      </div>
                     </div>
-                    <div className="mt-4 pt-4 border-t border-gray-200">
-                      <p
-                        className="font-medium text-gray-900 text-center"
-                        style={{
-                          fontSize: "var(--text-25)",
-                          fontFamily: "var(--font-barlow)",
-                        }}
-                      >
-                        ${item.price}
-                      </p>
+
+                    {/* Product Info */}
+                    <div
+                      className={`flex-1 ${bgColor} p-4 sm:p-6 flex flex-col justify-between relative`}
+                    >
+                      <div className="space-y-3">
+                        <h3
+                          className="font-normal text-gray-900 text-center"
+                          style={{
+                            fontSize: "var(--text-25)",
+                            fontFamily: "var(--font-barlow)",
+                          }}
+                        >
+                          {item.title}
+                        </h3>
+                        <p
+                          className="font-normal text-gray-600 text-center leading-relaxed"
+                          style={{
+                            fontSize: "var(--text-14)",
+                            fontFamily: "var(--font-barlow)",
+                          }}
+                        >
+                          {item.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-4 pt-4">
+                        <p
+                          className="font-semibold text-gray-900 text-center mb-4"
+                          style={{
+                            fontSize: "var(--text-18)",
+                            fontFamily: "var(--font-barlow)",
+                          }}
+                        >
+                          £{item.price}
+                        </p>
+
+                        <button className="bg-black w-full text-14 font-semibold text-white px-6 py-3 rounded-full border border-black   transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 md:translate-y-2 md:group-hover:translate-y-0  ">
+                          Shop Now
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                );
+              }}
             />
           </div>
         </div>

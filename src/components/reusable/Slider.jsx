@@ -40,7 +40,7 @@ const Slider = ({
         setScreenSize("tablet");
       } else if (width < 1280) {
         // xl breakpoint
-        setScreenSize("laptop");
+        setScreenSize("small-tablet");
       } else {
         setScreenSize("desktop");
       }
@@ -354,11 +354,11 @@ const Slider = ({
               className="flex-shrink-0"
               style={getItemStyle(idx)}
             >
-              <div className={`${getItemSpacing} h-full`}>
+              <div className={`${getItemSpacing} h-full p-8`}>
                 {renderItem && typeof renderItem === "function" ? (
                   renderItem(item, idx, currentIndex, screenSize)
                 ) : (
-                  <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
+                  <div className="w-full h-full rounded-lg flex items-center justify-center">
                     <span
                       className="text-gray-400 font-medium"
                       style={{

@@ -1,3 +1,13 @@
+import Shop_Header_1 from "../assets/images/header/shop_1.jpg";
+import Shop_Header_2 from "../assets/images/header/shop_2.png";
+import Acc_Header_1 from "../assets/images/header/accessories_1.jpg";
+import Acc_Header_2 from "../assets/images/header/accessories_2.jpg";
+import Coffee_Header_1 from "../assets/images/header/coffee_1.jpg";
+import Coffee_Header_2 from "../assets/images/header/coffee_2.jpg";
+import Edu_Header_1 from "../assets/images/header/education_1.jpg";
+import Edu_Header_2 from "../assets/images/header/education_2.jpg";
+import Sub_Header_1 from "../assets/images/header/subscription_1.jpg";
+
 const data = {
   navigation_menus: {
     left_menus: [
@@ -21,12 +31,12 @@ const data = {
             {
               title: "Clifton Merchandise",
               subtitle: "Clifton Coffee X Zara Mecdermott",
-              image: "",
+              image: Shop_Header_1,
             },
             {
               title: "Brewing Equipment",
               subtitle: "Mirr X Clifton Coffee",
-              image: "",
+              image: Shop_Header_2,
             },
           ],
         },
@@ -55,16 +65,12 @@ const data = {
             {
               title: "Cadence Espresso",
               subtitle: "Autumn Edition",
-              image:
-                "https://images.unsplash.com/photo-1574092867102-9372c49d01b4?w=400&h=300&fit=crop",
-              link: "#",
+              image: Coffee_Header_1,
             },
             {
               title: "El Project Espresso",
               subtitle: "Finca Buena Vista",
-              image:
-                "https://images.unsplash.com/photo-1497515114629-f71d768fd07c?w=400&h=300&fit=crop",
-              link: "#",
+              image: Coffee_Header_2,
             },
           ],
         },
@@ -93,12 +99,12 @@ const data = {
             {
               title: "Suspension Espresso",
               subtitle: "Brazil | Fazenda Pinhal",
-              image: "",
+              image: Sub_Header_1,
             },
             {
               title: "El Project Espresso",
               subtitle: "Finca Buena Vista",
-              image: "",
+              image: Coffee_Header_2,
             },
           ],
         },
@@ -136,12 +142,12 @@ const data = {
             {
               title: "Suspension Espresso",
               subtitle: "Brazil | Fazenda Pinhal",
-              image: "",
+              image: Acc_Header_1,
             },
             {
               title: "Morning Machine",
               subtitle: "OPAL One Coffee Pod Machine",
-              image: "",
+              image: Acc_Header_2,
             },
           ],
         },
@@ -168,12 +174,12 @@ const data = {
             {
               title: "Training Videos",
               subtitle: "Coffee Training Videos",
-              image: "",
+              image: Edu_Header_1,
             },
             {
               title: "Training & Support",
               subtitle: "Award winning training and support",
-              image: "",
+              image: Edu_Header_2,
             },
           ],
         },

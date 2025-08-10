@@ -30,26 +30,20 @@ const OurCollectionSection = () => {
 
   const TopContent = (item) => {
     return (
-      <div className="w-full h-full flex bg-[rgba(0,0,0,0.4)] text-white justify-end items-center flex-col group">
-        <div className="mb-4 sm:mb-6 lg:mb-8 xl:mb-10 flex flex-col px-4 sm:px-6">
-          <h2
-            className="text-center font-bold mb-3 sm:mb-4"
-            style={{
-              fontSize: "var(--text-40)",
-              fontFamily: "var(--font-barlow)",
-            }}
-          >
-            {item.title}
-          </h2>
-          <button
-            className="group-hover:underline border border-white text-white hover:bg-white hover:text-gray-900 font-medium px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 transition-all duration-300 rounded-none"
-            style={{
-              fontSize: "var(--text-18)",
-              fontFamily: "var(--font-barlow)",
-            }}
-          >
-            Shop Now
-          </button>
+      <div className="absolute inset-0">
+        {/* Gradient overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+
+        {/* Content positioned at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-8">
+          <div className="text-white">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium mb-2 sm:mb-3 text-white">
+              {item.title}
+            </h3>
+            <button className="text-sm sm:text-base lg:text-lg text-white/90 hover:text-white transition-colors duration-300 font-light tracking-wide">
+              Shop Now
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -61,12 +55,14 @@ const OurCollectionSection = () => {
       style={{ fontFamily: "var(--font-barlow)" }}
     >
       <h2
-        className="text-center text-primary font-bold"
-        style={{ fontSize: "var(--text-70)" }}
+        className="text-center text-primary font-normal tracking-tighter text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+        style={{ fontFamily: "var(--font-barlow)" }}
       >
         Our Collections
       </h2>
-      <div className="w-full h-[350px] sm:h-[450px] md:h-[550px] lg:h-[650px] xl:h-[750px] overflow-hidden">
+
+      {/* Responsive container with proper height constraints */}
+      <div className="w-full min-h-[500px] sm:min-h-[600px] md:min-h-[650px] lg:min-h-[800px] xl:min-h-[750px] overflow-hidden py-4">
         <Slider
           items={collections}
           itemsToShow={3}
@@ -79,12 +75,15 @@ const OurCollectionSection = () => {
           showPartialNext={true}
           partialNextPercent={0}
           renderItem={(item) => (
-            <div className="w-full h-[320px] sm:h-[420px] md:h-[520px] lg:h-[600px] xl:h-[650px] aspect-[2/3] rounded-[15px] sm:rounded-[20px] lg:rounded-[25px] xl:rounded-[30px] overflow-hidden">
-              <ImageWithHoverEffect
-                topImage={item.images[0]}
-                bottomImage={item.images[1]}
-                renderTopContent={() => TopContent(item)}
-              />
+            <div className="w-full h-full max-w-full">
+              {/* Card container with hover effects */}
+              <div className="group relative w-full h-[420px] sm:h-[470px] md:h-[530px] lg:h-[570px] xl:h-[620px] rounded-2xl sm:rounded-3xl overflow-hidden  transition-all duration-500 cursor-pointer transform ">
+                <ImageWithHoverEffect
+                  topImage={item.images[0]}
+                  bottomImage={item.images[1]}
+                  renderTopContent={() => TopContent(item)}
+                />
+              </div>
             </div>
           )}
         />

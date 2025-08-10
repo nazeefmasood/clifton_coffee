@@ -4,7 +4,6 @@ import NewsletterSection from "../components/HomepageSections/NewsletterSection.
 import FooterSection from "../components/HomepageSections/FooterSection.jsx";
 import ExploreSection from "../components/HomepageSections/ExploreSection.jsx";
 import SubscriptionAndToursSection from "../components/HomepageSections/SubscriptionAndToursSection.jsx";
-import Demo from "../components/reusable/Demo.jsx";
 import OurCollectionSection from "../components/HomepageSections/OurCollectionSection.jsx";
 import TestimoninalsSection from "../components/HomepageSections/TestimoninalsSection.jsx";
 import NewProductsSection from "../components/HomepageSections/NewProductsSection.jsx";

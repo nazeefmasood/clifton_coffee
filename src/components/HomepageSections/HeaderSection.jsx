@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronDown, Search, ShoppingCart, User, Menu, X } from "lucide-react";
 import Logo from "../../assets/images/logo.png";
 import data from "../../data/db.js";
@@ -14,14 +14,35 @@ const HeaderSection = () => {
   const [isHeaderHovered, setIsHeaderHovered] = useState(false);
   const [expandedMobileMenu, setExpandedMobileMenu] = useState(null);
 
+  // New states for cart and search
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Prevent body scroll when overlays are open
+  useEffect(() => {
+    if (isCartOpen || isSearchOpen || isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isCartOpen, isSearchOpen, isMobileMenuOpen]);
+
   const handleMenuHover = (index) => {
-    setActiveMenu(index);
-    setActiveRightMenu(null);
+    if (!isCartOpen && !isSearchOpen) {
+      setActiveMenu(index);
+      setActiveRightMenu(null);
+    }
   };
 
   const handleRightMenuHover = (index) => {
-    setActiveRightMenu(index);
-    setActiveMenu(null);
+    if (!isCartOpen && !isSearchOpen) {
+      setActiveRightMenu(index);
+      setActiveMenu(null);
+    }
   };
 
   const handleMenuLeave = () => {
@@ -30,13 +51,17 @@ const HeaderSection = () => {
   };
 
   const handleHeaderMouseEnter = () => {
-    setIsHeaderHovered(true);
+    if (!isCartOpen && !isSearchOpen) {
+      setIsHeaderHovered(true);
+    }
   };
 
   const handleHeaderMouseLeave = () => {
-    setIsHeaderHovered(false);
-    setActiveMenu(null);
-    setActiveRightMenu(null);
+    if (!isCartOpen && !isSearchOpen) {
+      setIsHeaderHovered(false);
+      setActiveMenu(null);
+      setActiveRightMenu(null);
+    }
   };
 
   const toggleMobileSubmenu = (index, type) => {
@@ -44,12 +69,44 @@ const HeaderSection = () => {
     setExpandedMobileMenu(expandedMobileMenu === menuKey ? null : menuKey);
   };
 
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+    setIsSearchOpen(false);
+    setIsMobileMenuOpen(false);
+    setActiveMenu(null);
+    setActiveRightMenu(null);
+  };
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+    setIsCartOpen(false);
+    setIsMobileMenuOpen(false);
+    setActiveMenu(null);
+    setActiveRightMenu(null);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsCartOpen(false);
+    setIsSearchOpen(false);
+    setActiveMenu(null);
+    setActiveRightMenu(null);
+  };
+
+  const closeAllOverlays = () => {
+    setIsCartOpen(false);
+    setIsSearchOpen(false);
+    setIsMobileMenuOpen(false);
+    setActiveMenu(null);
+    setActiveRightMenu(null);
+  };
+
   return (
     <div className="relative z-50" style={{ fontFamily: "var(--font-barlow)" }}>
       {/* Announcement Bar */}
       <div className="bg-black text-white">
         <div className="flex justify-center items-center py-2 px-4 sm:py-3">
-          <p className="text-xs sm:text-sm lg:text-base font-medium text-center whitespace-nowrap">
+          <p className="text-14 sm:text-14 lg:text-base font-medium text-center whitespace-nowrap">
             Order before 10am for same day dispatch!
           </p>
         </div>
@@ -58,7 +115,11 @@ const HeaderSection = () => {
       {/* Header */}
       <header
         className={`relative transition-all duration-300 ease-in-out ${
-          isHeaderHovered || activeMenu !== null || activeRightMenu !== null
+          isHeaderHovered ||
+          activeMenu !== null ||
+          activeRightMenu !== null ||
+          isCartOpen ||
+          isSearchOpen
             ? "bg-white"
             : "bg-transparent"
         }`}
@@ -67,12 +128,15 @@ const HeaderSection = () => {
       >
         <div
           className={`py-3 sm:py-4 px-4 sm:px-6 lg:px-10 border-b transition-colors duration-300 ${
-            (isHeaderHovered && activeMenu !== null) || activeRightMenu !== null
+            (isHeaderHovered && activeMenu !== null) ||
+            activeRightMenu !== null ||
+            isCartOpen ||
+            isSearchOpen
               ? "border-black"
               : "border-white"
           }`}
         >
-          <div className="flex items-center justify-between  mx-auto ">
+          <div className="flex items-center justify-between mx-auto">
             {/* Left Navigation - Desktop Only */}
             <div className="hidden xl:flex items-center space-x-6 2xl:space-x-8 flex-1">
               {leftMenus.map((l_menu, index) => (
@@ -83,13 +147,15 @@ const HeaderSection = () => {
                 >
                   <button
                     className={`flex items-center space-x-1 font-medium transition-colors duration-200 ${
-                      isHeaderHovered || activeMenu !== null
+                      isHeaderHovered ||
+                      activeMenu !== null ||
+                      isCartOpen ||
+                      isSearchOpen
                         ? "text-gray-900 hover:text-gray-600"
                         : "text-white hover:text-gray-200"
                     }`}
-                    style={{ fontSize: "var(--text-18)" }}
                   >
-                    <span>{l_menu.title}</span>
+                    <span className="font-bold text-18">{l_menu.title}</span>
                     {l_menu.hasSubmenu && (
                       <ChevronDown
                         size={16}
@@ -109,7 +175,9 @@ const HeaderSection = () => {
                 className={`w-36 h-12 sm:w-44 sm:h-12 lg:w-56 lg:h-16 xl:w-56 xl:h-24 overflow-hidden transition-all duration-300 ${
                   isHeaderHovered ||
                   activeMenu !== null ||
-                  activeRightMenu !== null
+                  activeRightMenu !== null ||
+                  isCartOpen ||
+                  isSearchOpen
                     ? "invert"
                     : ""
                 }`}
@@ -138,13 +206,14 @@ const HeaderSection = () => {
                       className={`font-medium transition-colors duration-200 flex items-center space-x-1 ${
                         isHeaderHovered ||
                         activeMenu !== null ||
-                        activeRightMenu !== null
+                        activeRightMenu !== null ||
+                        isCartOpen ||
+                        isSearchOpen
                           ? "text-gray-900 hover:text-gray-600"
                           : "text-white hover:text-gray-200"
                       }`}
-                      style={{ fontSize: "var(--text-18)" }}
                     >
-                      <span>{r_menu.title}</span>
+                      <span className="font-bold text-18">{r_menu.title}</span>
                       {r_menu.hasSubmenu && (
                         <ChevronDown
                           size={16}
@@ -164,7 +233,9 @@ const HeaderSection = () => {
                   className={`transition-colors duration-200 p-1 ${
                     isHeaderHovered ||
                     activeMenu !== null ||
-                    activeRightMenu !== null
+                    activeRightMenu !== null ||
+                    isCartOpen ||
+                    isSearchOpen
                       ? "text-gray-900 hover:text-gray-600"
                       : "text-white hover:text-gray-200"
                   }`}
@@ -172,24 +243,30 @@ const HeaderSection = () => {
                   <User size={18} className="lg:w-5 lg:h-5" />
                 </button>
                 <button
+                  onClick={toggleSearch}
                   className={`transition-colors duration-200 p-1 ${
                     isHeaderHovered ||
                     activeMenu !== null ||
-                    activeRightMenu !== null
+                    activeRightMenu !== null ||
+                    isCartOpen ||
+                    isSearchOpen
                       ? "text-gray-900 hover:text-gray-600"
                       : "text-white hover:text-gray-200"
-                  }`}
+                  } ${isSearchOpen ? "text-blue-600" : ""}`}
                 >
                   <Search size={18} className="lg:w-5 lg:h-5" />
                 </button>
                 <button
-                  className={`transition-colors duration-200 p-1 ${
+                  onClick={toggleCart}
+                  className={`transition-colors duration-200 p-1 relative ${
                     isHeaderHovered ||
                     activeMenu !== null ||
-                    activeRightMenu !== null
+                    activeRightMenu !== null ||
+                    isCartOpen ||
+                    isSearchOpen
                       ? "text-gray-900 hover:text-gray-600"
                       : "text-white hover:text-gray-200"
-                  }`}
+                  } ${isCartOpen ? "text-blue-600" : ""}`}
                 >
                   <ShoppingCart size={18} className="lg:w-5 lg:h-5" />
                 </button>
@@ -202,11 +279,13 @@ const HeaderSection = () => {
                 isHeaderHovered ||
                 activeMenu !== null ||
                 activeRightMenu !== null ||
-                isMobileMenuOpen
+                isMobileMenuOpen ||
+                isCartOpen ||
+                isSearchOpen
                   ? "text-gray-900"
                   : "text-white"
               }`}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={toggleMobileMenu}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -214,105 +293,108 @@ const HeaderSection = () => {
         </div>
 
         {/* Desktop Mega Menu Dropdown */}
-        {activeMenu !== null && leftMenus[activeMenu]?.hasSubmenu && (
-          <div
-            className="absolute top-full left-0 w-full bg-white shadow-2xl z-40 border-t border-gray-200 hidden xl:block"
-            onMouseEnter={() => setActiveMenu(activeMenu)}
-            onMouseLeave={handleMenuLeave}
-          >
-            <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 lg:py-12">
-              <div className="grid grid-cols-12 gap-8 lg:gap-12">
-                {/* Categories Section */}
-                <div className="col-span-6">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-                    {leftMenus[activeMenu]?.submenu?.categories?.map(
-                      (category, categoryIndex) => (
-                        <div key={categoryIndex}>
-                          <h3
-                            className="font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200"
-                            style={{ fontSize: "var(--text-25)" }}
-                          >
-                            {category.title}
-                          </h3>
-                          <ul className="space-y-2">
-                            {category.items.map((item, itemIndex) => (
-                              <li key={itemIndex}>
-                                <a
-                                  href="#"
-                                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 block py-2 px-3 rounded-md font-normal -mx-3"
-                                  style={{ fontSize: "var(--text-18)" }}
-                                >
-                                  {item}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )
-                    )}
+        {activeMenu !== null &&
+          leftMenus[activeMenu]?.hasSubmenu &&
+          !isCartOpen &&
+          !isSearchOpen && (
+            <div
+              className="absolute top-full left-0 w-full bg-white shadow-2xl z-40 border-t border-gray-200 hidden xl:block"
+              onMouseEnter={() => setActiveMenu(activeMenu)}
+              onMouseLeave={handleMenuLeave}
+            >
+              <div className=" mx-auto px-6 lg:px-20 py-8 lg:py-12">
+                <div className="grid grid-cols-12 gap-8 lg:gap-12">
+                  {/* Categories Section */}
+                  <div className="col-span-6">
+                    <div
+                      className={`grid grid-cols-1 gap-6 lg:gap-8 lg:grid-cols-${
+                        leftMenus[activeMenu]?.submenu?.categories.length < 2
+                          ? 2
+                          : leftMenus[activeMenu]?.submenu?.categories.length
+                      }`}
+                    >
+                      {leftMenus[activeMenu]?.submenu?.categories?.map(
+                        (category, categoryIndex) => (
+                          <div key={categoryIndex}>
+                            <h3
+                              className="font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200"
+                              style={{ fontSize: "var(--text-25)" }}
+                            >
+                              {category.title}
+                            </h3>
+                            <ul className="space-y-2">
+                              {category.items.map((item, itemIndex) => (
+                                <li key={itemIndex}>
+                                  <a
+                                    href="#"
+                                    className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 block py-2 px-3 rounded-md font-normal -mx-3"
+                                    style={{ fontSize: "var(--text-18)" }}
+                                  >
+                                    {item}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                {/* Featured Products Section */}
-                <div className="col-span-6">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {leftMenus[activeMenu]?.submenu?.featuredProducts?.map(
-                      (product, productIndex) => (
-                        <div
-                          key={productIndex}
-                          className="group cursor-pointer"
-                        >
-                          <a href={product.link || "#"} className="block">
-                            <div className="relative overflow-hidden rounded-lg mb-3 shadow-lg">
-                              <img
-                                src={product.image}
-                                alt={product.title}
-                                className="w-full h-36 lg:h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                              />
-                              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <span
-                                  className="text-white font-medium bg-black bg-opacity-50 px-4 py-2 rounded-md"
-                                  style={{ fontSize: "var(--text-18)" }}
-                                >
-                                  View Product
-                                </span>
+                  {/* Featured Products Section */}
+                  <div className="col-span-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      {leftMenus[activeMenu]?.submenu?.featuredProducts?.map(
+                        (product, productIndex) => (
+                          <div
+                            key={productIndex}
+                            className="group cursor-pointer "
+                          >
+                            <a href={product.link || "#"} className="block">
+                              <div className="relative overflow-hidden rounded-lg mb-3 shadow-lg">
+                                <img
+                                  src={product.image}
+                                  alt={product.title}
+                                  className="w-full h-36 lg:h-[300px] object-cover group-hover:scale-110 transition-transform aspect-square duration-500"
+                                />
+                                <div className="absolute inset-0 bg-black/50 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
                               </div>
-                            </div>
-                            <div className="text-center">
-                              <h4
-                                className="font-semibold text-gray-900 mb-1 group-hover:text-gray-600 transition-colors"
-                                style={{ fontSize: "var(--text-18)" }}
-                              >
-                                {product.title}
-                              </h4>
-                              <p
-                                className="text-gray-600 font-normal"
-                                style={{ fontSize: "var(--text-18)" }}
-                              >
-                                {product.subtitle}
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                      )
-                    )}
+                              <div className="text-center">
+                                <h4
+                                  className="font-semibold text-gray-900 mb-1 group-hover:text-gray-600 transition-colors"
+                                  style={{ fontSize: "var(--text-25)" }}
+                                >
+                                  {product.title}
+                                </h4>
+                                <p
+                                  className="text-gray-600 font-normal"
+                                  style={{ fontSize: "var(--text-16)" }}
+                                >
+                                  {product.subtitle}
+                                </p>
+                              </div>
+                            </a>
+                          </div>
+                        )
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
         {/* Right Menu Dropdown */}
         {activeRightMenu !== null &&
-          rightMenus[activeRightMenu]?.hasSubmenu && (
+          rightMenus[activeRightMenu]?.hasSubmenu &&
+          !isCartOpen &&
+          !isSearchOpen && (
             <div
               className="absolute top-full left-0 w-full bg-white shadow-2xl z-40 border-t border-gray-200 hidden xl:block"
               onMouseEnter={() => setActiveRightMenu(activeRightMenu)}
               onMouseLeave={handleMenuLeave}
             >
-              <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 lg:py-12">
+              <div className=" mx-auto px-6 lg:px-20 py-8 lg:py-12">
                 <div className="grid grid-cols-12 gap-8 lg:gap-12">
                   {/* Categories Section */}
                   <div className="col-span-6">
@@ -361,28 +443,20 @@ const HeaderSection = () => {
                                 <img
                                   src={product.image}
                                   alt={product.title}
-                                  className="w-full h-36 lg:h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                                  className="w-full h-36 lg:h-48 object-cover group-hover:scale-110 transition-transform aspect-square duration-500"
                                 />
-                                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                  <span
-                                    className="text-white font-medium bg-black bg-opacity-50 px-4 py-2 rounded-md"
-                                    style={{ fontSize: "var(--text-18)" }}
-                                  >
-                                    View Product
-                                  </span>
-                                </div>
+                                <div className="absolute inset-0 bg-black/50 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
                               </div>
                               <div className="text-center">
                                 <h4
                                   className="font-semibold text-gray-900 mb-1 group-hover:text-gray-600 transition-colors"
-                                  style={{ fontSize: "var(--text-18)" }}
+                                  style={{ fontSize: "var(--text-25)" }}
                                 >
                                   {product.title}
                                 </h4>
                                 <p
                                   className="text-gray-600 font-normal"
-                                  style={{ fontSize: "var(--text-18)" }}
+                                  style={{ fontSize: "var(--text-16)" }}
                                 >
                                   {product.subtitle}
                                 </p>
@@ -397,11 +471,31 @@ const HeaderSection = () => {
               </div>
             </div>
           )}
+      </header>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="xl:hidden absolute top-full left-0 w-full bg-white shadow-2xl z-40 border-t max-h-screen overflow-y-auto">
-            <div className="px-4 py-6">
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="xl:hidden fixed inset-0 z-50 bg-white">
+          <div className="flex flex-col h-full">
+            {/* Mobile Header */}
+            <div className="flex items-center justify-between p-4 border-b">
+              <div className="w-32 h-8">
+                <img
+                  src={Logo}
+                  alt="Clifton Coffee Roasters"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <button
+                onClick={closeAllOverlays}
+                className="text-gray-900 hover:text-gray-600 transition-colors p-1"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Mobile Menu Content */}
+            <div className="flex-1 overflow-y-auto px-4 py-6">
               <div className="space-y-4">
                 {/* Left Menu Items */}
                 <div className="space-y-4">
@@ -431,7 +525,7 @@ const HeaderSection = () => {
                       {l_menu.hasSubmenu &&
                         l_menu.submenu &&
                         expandedMobileMenu === `left-${index}` && (
-                          <div className="mt-3 pl-4 space-y-4 bg-gray-50 rounded-lg p-4">
+                          <div className="mt-3 pl-4 space-y-4  rounded-lg p-4">
                             {l_menu.submenu.categories?.map(
                               (category, categoryIndex) => (
                                 <div key={categoryIndex}>
@@ -457,6 +551,45 @@ const HeaderSection = () => {
                                 </div>
                               )
                             )}
+
+                            <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+                              {l_menu.submenu?.featuredProducts?.map(
+                                (product, productIndex) => (
+                                  <div
+                                    key={productIndex}
+                                    className="group cursor-pointer "
+                                  >
+                                    <a
+                                      href={product.link || "#"}
+                                      className="block"
+                                    >
+                                      <div className="relative overflow-hidden rounded-lg mb-3 shadow-lg">
+                                        <img
+                                          src={product.image}
+                                          alt={product.title}
+                                          className="w-full h-36  object-cover group-hover:scale-110 transition-transform aspect-5/3  duration-500"
+                                        />
+                                        <div className="absolute inset-0 bg-black/50 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                                      </div>
+                                      <div className="text-center">
+                                        <h4
+                                          className="font-semibold text-gray-900 mb-1 group-hover:text-gray-600 transition-colors"
+                                          style={{ fontSize: "var(--text-18)" }}
+                                        >
+                                          {product.title}
+                                        </h4>
+                                        <p
+                                          className="text-gray-600 font-normal"
+                                          style={{ fontSize: "var(--text-16)" }}
+                                        >
+                                          {product.subtitle}
+                                        </p>
+                                      </div>
+                                    </a>
+                                  </div>
+                                )
+                              )}
+                            </div>
                           </div>
                         )}
                     </div>
@@ -491,7 +624,7 @@ const HeaderSection = () => {
                       {r_menu.hasSubmenu &&
                         r_menu.submenu &&
                         expandedMobileMenu === `right-${index}` && (
-                          <div className="mt-3 pl-4 space-y-4 bg-gray-50 rounded-lg p-4">
+                          <div className="mt-3 pl-4 space-y-4  rounded-lg p-4">
                             {r_menu.submenu.categories?.map(
                               (category, categoryIndex) => (
                                 <div key={categoryIndex}>
@@ -514,6 +647,48 @@ const HeaderSection = () => {
                                       </li>
                                     ))}
                                   </ul>
+                                  <div className="grid grid-cols-1 md:grid-cols-2  gap-6 mt-10">
+                                    {r_menu.submenu?.featuredProducts?.map(
+                                      (product, productIndex) => (
+                                        <div
+                                          key={productIndex}
+                                          className="group cursor-pointer "
+                                        >
+                                          <a
+                                            href={product.link || "#"}
+                                            className="block"
+                                          >
+                                            <div className="relative overflow-hidden rounded-lg mb-3 shadow-lg">
+                                              <img
+                                                src={product.image}
+                                                alt={product.title}
+                                                className="w-full h-36  object-cover group-hover:scale-110 transition-transform aspect-5/3  duration-500"
+                                              />
+                                              <div className="absolute inset-0 bg-black/50 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                                            </div>
+                                            <div className="text-center">
+                                              <h4
+                                                className="font-semibold text-gray-900 mb-1 group-hover:text-gray-600 transition-colors"
+                                                style={{
+                                                  fontSize: "var(--text-18)",
+                                                }}
+                                              >
+                                                {product.title}
+                                              </h4>
+                                              <p
+                                                className="text-gray-600 font-normal"
+                                                style={{
+                                                  fontSize: "var(--text-16)",
+                                                }}
+                                              >
+                                                {product.subtitle}
+                                              </p>
+                                            </div>
+                                          </a>
+                                        </div>
+                                      )
+                                    )}
+                                  </div>
                                 </div>
                               )
                             )}
@@ -528,18 +703,122 @@ const HeaderSection = () => {
                   <button className="text-gray-900 hover:text-gray-600 transition-colors p-3">
                     <User size={24} />
                   </button>
-                  <button className="text-gray-900 hover:text-gray-600 transition-colors p-3">
+                  <button
+                    onClick={toggleSearch}
+                    className="text-gray-900 hover:text-gray-600 transition-colors p-3"
+                  >
                     <Search size={24} />
                   </button>
-                  <button className="text-gray-900 hover:text-gray-600 transition-colors p-3">
+                  <button
+                    onClick={toggleCart}
+                    className="text-gray-900 hover:text-gray-600 transition-colors p-3"
+                  >
                     <ShoppingCart size={24} />
                   </button>
                 </div>
               </div>
             </div>
           </div>
-        )}
-      </header>
+        </div>
+      )}
+
+      {/* Search Overlay */}
+      {isSearchOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-start justify-center pt-20">
+          <div className="w-full max-w-4xl px-4">
+            <div className="relative">
+              <button
+                onClick={closeAllOverlays}
+                className="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors"
+              >
+                <X size={32} />
+              </button>
+
+              <div className="text-center mb-8">
+                <h2 className="text-white text-3xl md:text-4xl font-light mb-8">
+                  Start search
+                </h2>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder=""
+                    className="w-full bg-transparent border-b-2 border-white text-white text-xl md:text-2xl py-4 px-0 focus:outline-none focus:border-gray-300 placeholder-transparent"
+                    autoFocus
+                  />
+                </div>
+              </div>
+
+              {searchQuery && (
+                <div className="mt-8 text-white">
+                  <p className="text-lg mb-4">
+                    Search results for "{searchQuery}":
+                  </p>
+                  <div className="space-y-2">
+                    <div className="p-4 hover:bg-white hover:bg-opacity-10 rounded-lg cursor-pointer transition-colors">
+                      <h3 className="font-semibold">Sample Product 1</h3>
+                      <p className="text-gray-300">
+                        Product description here...
+                      </p>
+                    </div>
+                    <div className="p-4 hover:bg-white hover:bg-opacity-10 rounded-lg cursor-pointer transition-colors">
+                      <h3 className="font-semibold">Sample Product 2</h3>
+                      <p className="text-gray-300">
+                        Product description here...
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Cart Sidebar */}
+      {isCartOpen && (
+        <div className="fixed inset-0 z-50 overflow-hidden">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black bg-opacity-50"
+            onClick={closeAllOverlays}
+          ></div>
+
+          {/* Sidebar */}
+          <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl">
+            <div className="flex flex-col h-full">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b">
+                <h2 className="text-xl font-semibold">Shopping Cart (0)</h2>
+                <button
+                  onClick={closeAllOverlays}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* Cart Content */}
+              <div className="flex-1 overflow-y-auto">
+                <div className="flex flex-col items-center justify-center h-full text-center px-6">
+                  <div className="mb-8">
+                    <p className="text-xl font-medium text-gray-900 mb-2">
+                      Your cart is currently empty.
+                    </p>
+                  </div>
+                  <button
+                    onClick={closeAllOverlays}
+                    className="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors"
+                  >
+                    Continue Browsing
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

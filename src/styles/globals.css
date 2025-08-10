@@ -150,13 +150,26 @@ img {
 
 @theme {
   --font-barlow: "Barlow", sans-serif;
-
+  --text-91: clamp(5.6875rem, 8vw + 3rem, 5.6875rem);
+  /* ~91px */
   --text-70: clamp(3rem, 6vw + 1rem, 4.375rem);
   /* ~70px max */
+  --text-48: clamp(3rem, 4vw + 1rem, 3rem);
+  /* ~48px */
   --text-40: clamp(2rem, 3vw + 1rem, 2.5rem);
   /* ~40px max */
+  --text-36: clamp(2.25rem, 2.5vw + 1rem, 2.25rem);
+  /* ~36px */
+
   --text-25: clamp(1.25rem, 1vw + 1rem, 1.5625rem);
+
   /* ~25px max */
+  --text-19: clamp(1.1875rem, 0.5vw + 1rem, 1.1875rem);
+  /* ~19px */
   --text-18: clamp(1rem, 0.5vw + 0.875rem, 1.125rem);
   /* ~18px max */
+  --text-14: clamp(0.875rem, 0.4vw + 0.8rem, 0.875rem);
+  /* ~14px */
+  --text-16: clamp(1rem, 0.3vw + 0.9375rem, 1rem);
+  /* ~16px */
 }

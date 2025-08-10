@@ -9,13 +9,16 @@ import Img_2_2 from "../../assets/images/collections/collection_2_2.jpg";
 import Img_3_1 from "../../assets/images/collections/collection_3_1.jpg";
 import Img_3_2 from "../../assets/images/collections/collection_3_2.jpg";
 import ImageWithHoverEffect from "../reusable/ImageWithHoverEffect";
+import Button from "../reusable/Button";
 
 const ExploreSection = () => {
   const images = [Img_1_1, Img_1_2, Img_2_1, Img_2_2, Img_3_1, Img_3_2];
   const [showPartialNext, setShowPartialNext] = useState(true);
+
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      // Set showPartialNext to false for screens smaller than laptop size (1024px)
+      if (window.innerWidth < 1280) {
         setShowPartialNext(false);
       } else {
         setShowPartialNext(true);
@@ -45,40 +48,25 @@ const ExploreSection = () => {
     {
       title: "Clifton Chocolate",
       description:
-        " It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Why do we use it?",
+        " It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Why do we use it?",
     },
   ];
 
   const BannerTopContent = () => {
     return (
-      <div className="bg-black/40 text-white flex flex-col w-full h-full justify-center items-start p-4 sm:p-6 md:p-8 lg:p-12">
-        <p
-          className="text-sm sm:text-base md:text-lg font-light mb-2 sm:mb-4"
-          style={{
-            fontFamily: "Barlow, sans-serif",
-            fontSize: "clamp(1rem, 0.5vw + 0.875rem, 1.125rem)",
-          }}
-        >
+      <div className="bg-black/40 text-white flex flex-col w-full h-full justify-center items-start p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16">
+        {/* Subtitle using custom text-18 variable */}
+        <p className="font-barlow font-light text-16 mb-2 sm:mb-4 tracking-wide">
           Clifton Coffee — Speciality Coffee
         </p>
-        <h2
-          className="font-black mb-4 sm:mb-6 leading-none"
-          style={{
-            fontFamily: "Barlow, sans-serif",
-            fontSize: "clamp(3rem, 6vw + 1rem, 4.375rem)",
-            fontWeight: 900,
-          }}
-        >
+
+        {/* Main heading using custom text-70 variable */}
+        <h2 className="font-barlow font-normal text-70 mb-4 sm:mb-6 lg:mb-8 leading-none tracking-tight">
           Shop coffee
         </h2>
-        <p
-          className="font-normal leading-relaxed max-w-2xl"
-          style={{
-            fontFamily: "Barlow, sans-serif",
-            fontSize: "clamp(1.25rem, 1vw + 1rem, 1.5625rem)",
-            fontWeight: 400,
-          }}
-        >
+
+        {/* Description using custom text-25 variable */}
+        <p className="font-barlow font-normal text-18 leading-relaxed max-w-2xl">
           Discover your perfect cup of coffee—crafted to match your taste and
           style.
           <br className="hidden sm:block" />
@@ -89,12 +77,9 @@ const ExploreSection = () => {
   };
 
   return (
-    <div
-      className="w-full min-h-screen"
-      style={{ fontFamily: "Barlow, sans-serif" }}
-    >
-      {/* Banner Section */}
-      <div className="w-full h-[400px] sm:h-[500px] lg:h-[600px] ">
+    <div className="w-full min-h-screen font-barlow">
+      {/* Banner Section - Fully responsive heights */}
+      <div className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] min-h-[400px] max-h-[800px]">
         <ImageWithHoverEffect
           topImage={Banner}
           swapOnHover={false}
@@ -102,64 +87,52 @@ const ExploreSection = () => {
         />
       </div>
 
-      {/* Slider Section */}
-      <div className="bg-[#E0E1DA] h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden">
+      <div className="bg-[#E0E1DA] h-max  lg:h-[750px] xl:h-[900px] min-2xl:h-[800px] overflow-hidden">
         <Slider
           items={items}
           itemsToShow={1}
-          translateIn="-y"
+          itemsToShowMobile={1}
+          itemsToShowTablet={1}
+          translateIn={showPartialNext ? "-y" : "-x"}
           showArrows={false}
-          paginationLocation="right"
-          showPartialNext={true}
+          paginationLocation={showPartialNext ? "right" : "bottom"}
+          showPartialNext={showPartialNext}
           partialNextPercent={0.8}
           renderItem={(item, i, currentIndex) => {
             const isActive = i === Math.floor(currentIndex / 1);
 
             return (
-              <div className="w-full h-[400px] sm:h-[500px] lg:h-[650px] flex flex-col lg:flex-row overflow-hidden">
+              <div className="w-full h-[650px] sm:h-[900px] lg:h-[700px] xl:h-[800px] min-2xl:h-[800px] flex flex-col-reverse  lg:flex-row overflow-hidden sm:flex-col-reverse">
                 {/* Left side - Content */}
-                <div className="flex-1 flex flex-col justify-start items-start p-4 sm:p-6 md:p-8 lg:p-12">
-                  <h2
-                    className="font-bold mb-4 sm:mb-6 text-gray-800 leading-tight"
-                    style={{
-                      fontFamily: "Barlow, sans-serif",
-                      fontSize: "clamp(1.75rem, 3vw + 1rem, 2.5rem)",
-                      fontWeight: 700,
-                    }}
-                  >
+                <div className="flex lg:flex-1 flex-col  justify-center items-center xl:items-start lg:justify-start p-4 sm:p-6 md:p-8 lg:p-4 mt-8 sm:mt-10 md:mt-12 lg:mt-14">
+                  <h2 className="font-barlow font-normal mb-4 text-36 sm:text-48 md:text-56 xl:text-70 sm:mb-6 text-gray-800 leading-tight lg:leading-tighter tracking-tight lg:tracking-tighter ">
                     {item.title}
                   </h2>
-                  <p
-                    className="text-gray-600 leading-relaxed mb-6 sm:mb-8 font-normal"
-                    style={{
-                      fontFamily: "Barlow, sans-serif",
-                      fontSize: "clamp(1rem, 0.5vw + 0.875rem, 1.125rem)",
-                      fontWeight: 400,
-                    }}
-                  >
+                  <p className="font-barlow text-center  text-gray-600 text-14 sm:text-16 lg:text-18 leading-relaxed mb-6 sm:mb-8 font-normal max-w-full lg:max-w-2xl">
                     {item.description}
                   </p>
                   {isActive && (
-                    <button
-                      className="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700  font-medium  transform hover:-translate-y-0.5 transition-all duration-200"
-                      style={{
-                        fontFamily: "Barlow, sans-serif",
-                        fontWeight: 500,
-                      }}
-                    >
-                      Read More
-                    </button>
+                    <Button
+                      bg="bg-transparent"
+                      hoverBg="hover:bg-black"
+                      border="border-black"
+                      hoverBorder="hover:border-black"
+                      textColor="text-black"
+                      hoverTextColor="hover:text-white"
+                      paddingX={"px-8 sm:px-10"}
+                      paddingY="py-2 sm:py-3"
+                    />
                   )}
                 </div>
 
                 {/* Right side - Image */}
-                <div className="flex-1 w-full h-full z-30 flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 relative">
-                  <div className="absolute inset-4 sm:inset-6 md:inset-8 lg:inset-10 bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 overflow-hidden rounded-2xl">
+                <div className="flex-1 w-full h-full z-30 flex items-center justify-center p-0  lg:p-4 relative mt-6 sm:mt-8 md:mt-10 bg-amber-100">
+                  <div className="absolute inset-0    xl:bottom-20 overflow-hidden p-6">
                     {isActive && (
                       <img
                         src={images[i]}
                         alt={`${item.title} collection`}
-                        className="w-full h-full object-cover transition-all duration-500 ease-in-out hover:scale-105"
+                        className="w-full h-full object-cover aspect-square lg:aspect-3/4 xl:aspect-3/3 min-2xl:aspect-video transition-all duration-500 ease-in-out hover:scale-105 rounded-3xl"
                       />
                     )}
                   </div>
