@@ -14,10 +14,7 @@ const ImageWithHoverEffect = ({
   }
 
   return (
-    <div
-      className="w-full h-full relative group overflow-hidden bg-gray-200"
-      style={{ fontFamily: "Barlow, sans-serif" }}
-    >
+    <div className="w-full h-full relative group overflow-hidden">
       {swapOnHover && bottomImage && topImage ? (
         <>
           {/* Bottom image */}

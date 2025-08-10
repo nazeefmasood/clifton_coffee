@@ -279,27 +279,27 @@ const Slider = ({
       case "mobile":
         return {
           base: baseClasses,
-          size: "w-2 h-2",
+          size: "w-3 h-3",
           gap: "gap-1.5",
-          active: "bg-gray-900 scale-125",
-          inactive: "bg-gray-300 hover:bg-gray-500",
+          active: "bg-black scale-125",
+          inactive: "border border-gray-800 hover:bg-gray-500",
         };
       case "small-tablet":
       case "tablet":
         return {
           base: baseClasses,
-          size: "w-2.5 h-2.5",
+          size: "w-3.5 h-3.5",
           gap: "gap-2",
-          active: "bg-gray-900 scale-125",
-          inactive: "bg-gray-300 hover:bg-gray-500",
+          active: "bg-black scale-125",
+          inactive: "border border-gray-800 hover:bg-gray-500",
         };
       default:
         return {
           base: baseClasses,
-          size: "w-3 h-3",
+          size: "w-4 h-4",
           gap: "gap-2.5",
-          active: "bg-gray-900 scale-125",
-          inactive: "bg-gray-300 hover:bg-gray-500",
+          active: "bg-black scale-125",
+          inactive: "border border-gray-800 hover:bg-gray-500",
         };
     }
   }, [screenSize]);

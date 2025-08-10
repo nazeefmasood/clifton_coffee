@@ -1,32 +1,14 @@
-import React from "react";
-import Social_1 from "../../assets/images/social_media/social_1.jpg";
-import Social_2 from "../../assets/images/social_media/social_2.jpg";
-import Social_3 from "../../assets/images/social_media/social_5.jpg";
-import Social_4 from "../../assets/images/social_media/social_4.jpg";
-import Social_5 from "../../assets/images/social_media/social_1.jpg";
-import Social_6 from "../../assets/images/social_media/social_2.jpg";
-import Social_7 from "../../assets/images/social_media/social_4.jpg";
-import Social_8 from "../../assets/images/social_media/social_5.jpg";
+import React, { useState } from "react";
+
 import Slider from "../reusable/Slider";
 import { Instagram } from "lucide-react";
+import data from "../../data/db";
 
 const SocialMediaSection = () => {
-  const images = [
-    { img: Social_1 },
-    { img: Social_2 },
-    { img: Social_3 },
-    { img: Social_4 },
-    { img: Social_5 },
-    { img: Social_6 },
-    { img: Social_7 },
-    { img: Social_8 },
-  ];
+  const [images, setImages] = useState(data.socialmedia.images);
 
   return (
-    <div
-      className="flex flex-col mt-6 sm:mt-8 lg:mt-12 gap-6 sm:gap-8 lg:gap-12 overflow-hidden py-4 sm:py-6 lg:py-8"
-      style={{ fontFamily: "Barlow, sans-serif" }}
-    >
+    <div className="flex flex-col  gap-6 sm:gap-8 lg:gap-12 overflow-hidden py-4 sm:py-6 lg:py-8 lg:px-4 bg-[color:var(--color-light-grey-2)]">
       {/* Header Section */}
       <div className="px-4 sm:px-6 lg:px-8">
         <h2 className="text-center  mb-2 sm:mb-4 text-36 font-normal font-barlow underline underline-offset-8 cursor-pointer">

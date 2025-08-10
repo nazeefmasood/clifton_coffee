@@ -15,7 +15,6 @@ const HeaderSection = () => {
   const [isHeaderHovered, setIsHeaderHovered] = useState(false);
   const [expandedMobileMenu, setExpandedMobileMenu] = useState(null);
 
-  // New states for cart and search
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -115,7 +114,7 @@ const HeaderSection = () => {
 
       {/* Header */}
       <header
-        className={`relative transition-all duration-300 ease-in-out ${
+        className={`relative transition-all duration-500 ease-in-out ${
           isHeaderHovered ||
           activeMenu !== null ||
           activeRightMenu !== null ||
@@ -156,7 +155,7 @@ const HeaderSection = () => {
                         : "text-white hover:text-gray-200"
                     }`}
                   >
-                    <span className="font-bold text-22">{l_menu.title}</span>
+                    <span className="font-normal text-22">{l_menu.title}</span>
                     {l_menu.hasSubmenu && (
                       <ChevronDown
                         size={16}
@@ -214,7 +213,7 @@ const HeaderSection = () => {
                           : "text-white hover:text-gray-200"
                       }`}
                     >
-                      <span className="font-bold text-22">{r_menu.title}</span>
+                      <span className="font-normal text-22">{r_menu.title}</span>
                       {r_menu.hasSubmenu && (
                         <ChevronDown
                           size={18}
@@ -317,10 +316,7 @@ const HeaderSection = () => {
                       {leftMenus[activeMenu]?.submenu?.categories?.map(
                         (category, categoryIndex) => (
                           <div key={categoryIndex}>
-                            <h3
-                              className="font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200"
-                              style={{ fontSize: "var(--text-25)" }}
-                            >
+                            <h3 className="font-semibold  text-25 text-gray-900 mb-4 pb-2 border-b border-gray-200">
                               {category.title}
                             </h3>
                             <ul className="space-y-2">
@@ -328,8 +324,7 @@ const HeaderSection = () => {
                                 <li key={itemIndex}>
                                   <a
                                     href="#"
-                                    className="text-gray-600 hover:text-gray-900 hover:underline underline-offset-8 transition-all duration-200 block py-2 px-3 rounded-md font-normal mx-3"
-                                    style={{ fontSize: "var(--text-18)" }}
+                                    className="text-gray-600 hover:text-gray-900 hover:underline underline-offset-8 transition-all duration-200 block py-2 px-3 rounded-md font-normal mx-3  text-18"
                                   >
                                     {item}
                                   </a>
@@ -361,16 +356,10 @@ const HeaderSection = () => {
                                 <div className="absolute inset-0 bg-black/50 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
                               </div>
                               <div className="text-center">
-                                <h4
-                                  className="font-semibold text-gray-900 mb-1 group-hover:text-gray-600 transition-colors"
-                                  style={{ fontSize: "var(--text-25)" }}
-                                >
+                                <h4 className="font-semibold text-25 text-gray-900 mb-1 group-hover:text-gray-600 transition-colors">
                                   {product.title}
                                 </h4>
-                                <p
-                                  className="text-gray-600 font-normal"
-                                  style={{ fontSize: "var(--text-16)" }}
-                                >
+                                <p className="text-gray-600 font-normal text-16">
                                   {product.subtitle}
                                 </p>
                               </div>
@@ -403,10 +392,7 @@ const HeaderSection = () => {
                       {rightMenus[activeRightMenu]?.submenu?.categories?.map(
                         (category, categoryIndex) => (
                           <div key={categoryIndex}>
-                            <h3
-                              className="font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200"
-                              style={{ fontSize: "var(--text-25)" }}
-                            >
+                            <h3 className="font-semibold text-gray-900  text-25 mb-4 pb-2 border-b border-gray-200">
                               {category.title}
                             </h3>
                             <ul className="space-y-2">
@@ -414,8 +400,7 @@ const HeaderSection = () => {
                                 <li key={itemIndex}>
                                   <a
                                     href="#"
-                                    className="text-gray-600 hover:text-gray-900 hover:underline underline-offset-8 transition-all duration-200 block py-2 px-3 rounded-md font-normal mx-3"
-                                    style={{ fontSize: "var(--text-18)" }}
+                                    className="text-gray-600 hover:text-gray-900 hover:underline underline-offset-8 transition-all duration-200 block py-2 px-3 rounded-md font-normal mx-3 text-18"
                                   >
                                     {item}
                                   </a>
@@ -449,16 +434,10 @@ const HeaderSection = () => {
                                 <div className="absolute inset-0 bg-black/50 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
                               </div>
                               <div className="text-center">
-                                <h4
-                                  className="font-semibold text-gray-900 mb-1 group-hover:text-gray-600 transition-colors"
-                                  style={{ fontSize: "var(--text-25)" }}
-                                >
+                                <h4 className="font-semibold text-gray-900 mb-1  text-25 group-hover:text-gray-600 transition-colors">
                                   {product.title}
                                 </h4>
-                                <p
-                                  className="text-gray-600 font-normal"
-                                  style={{ fontSize: "var(--text-16)" }}
-                                >
+                                <p className="text-gray-600 font-normal text-16">
                                   {product.subtitle}
                                 </p>
                               </div>
@@ -503,8 +482,7 @@ const HeaderSection = () => {
                   {leftMenus.map((l_menu, index) => (
                     <div key={index} className="border-b border-gray-100 pb-4">
                       <button
-                        className="flex items-center justify-between w-full text-left text-gray-900 font-medium py-3 hover:text-gray-600 transition-colors"
-                        style={{ fontSize: "var(--text-18)" }}
+                        className="flex items-center justify-between w-full text-left text-gray-900 font-medium py-3 hover:text-gray-600 transition-colors text-18"
                         onClick={() =>
                           l_menu.hasSubmenu &&
                           toggleMobileSubmenu(index, "left")
@@ -530,10 +508,7 @@ const HeaderSection = () => {
                             {l_menu.submenu.categories?.map(
                               (category, categoryIndex) => (
                                 <div key={categoryIndex}>
-                                  <h4
-                                    className="font-medium text-gray-900 mb-3 pb-2 border-b border-gray-200"
-                                    style={{ fontSize: "var(--text-18)" }}
-                                  >
+                                  <h4 className="font-medium text-gray-900 mb-3 text-18 pb-2 border-b border-gray-200">
                                     {category.title}
                                   </h4>
                                   <ul className="space-y-2 pl-2">
@@ -541,8 +516,7 @@ const HeaderSection = () => {
                                       <li key={itemIndex}>
                                         <a
                                           href="#"
-                                          className="text-gray-600 hover:text-gray-900 hover:bg-white block py-2 px-3 rounded-md transition-all font-normal"
-                                          style={{ fontSize: "var(--text-18)" }}
+                                          className="text-gray-600 hover:text-gray-900 hover:bg-white block py-2 px-3 rounded-md transition-all font-normal text-18"
                                         >
                                           {item}
                                         </a>
@@ -573,16 +547,10 @@ const HeaderSection = () => {
                                         <div className="absolute inset-0 bg-black/50 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
                                       </div>
                                       <div className="text-center">
-                                        <h4
-                                          className="font-semibold text-gray-900 mb-1 group-hover:text-gray-600 transition-colors"
-                                          style={{ fontSize: "var(--text-18)" }}
-                                        >
+                                        <h4 className="font-semibold text-gray-900 text-18 mb-1 group-hover:text-gray-600 transition-colors">
                                           {product.title}
                                         </h4>
-                                        <p
-                                          className="text-gray-600 font-normal"
-                                          style={{ fontSize: "var(--text-16)" }}
-                                        >
+                                        <p className="text-gray-600 font-normal text-16">
                                           {product.subtitle}
                                         </p>
                                       </div>
@@ -602,8 +570,7 @@ const HeaderSection = () => {
                   {rightMenus.map((r_menu, index) => (
                     <div key={index} className="border-b border-gray-100 pb-4">
                       <button
-                        className="flex items-center justify-between w-full text-left text-gray-900 font-medium py-3 hover:text-gray-600 transition-colors"
-                        style={{ fontSize: "var(--text-18)" }}
+                        className="flex items-center text-18 justify-between w-full text-left text-gray-900 font-medium py-3 hover:text-gray-600 transition-colors"
                         onClick={() =>
                           r_menu.hasSubmenu &&
                           toggleMobileSubmenu(index, "right")
@@ -629,10 +596,7 @@ const HeaderSection = () => {
                             {r_menu.submenu.categories?.map(
                               (category, categoryIndex) => (
                                 <div key={categoryIndex}>
-                                  <h4
-                                    className="font-medium text-gray-900 mb-3 pb-2 border-b border-gray-200"
-                                    style={{ fontSize: "var(--text-18)" }}
-                                  >
+                                  <h4 className="font-medium text-gray-900 text-18 mb-3 pb-2 border-b border-gray-200">
                                     {category.title}
                                   </h4>
                                   <ul className="space-y-2 pl-2">
@@ -640,8 +604,7 @@ const HeaderSection = () => {
                                       <li key={itemIndex}>
                                         <a
                                           href="#"
-                                          className="text-gray-600 hover:text-gray-900 hover:bg-white block py-2 px-3 rounded-md transition-all font-normal"
-                                          style={{ fontSize: "var(--text-18)" }}
+                                          className="text-gray-600 hover:text-gray-900 text-18 hover:bg-white block py-2 px-3 rounded-md transition-all font-normal"
                                         >
                                           {item}
                                         </a>

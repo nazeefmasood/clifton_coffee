@@ -1,32 +1,11 @@
-import React from "react";
-import Img_1_1 from "../../assets/images/collections/collection_1_1.jpg";
-import Img_1_2 from "../../assets/images/collections/collection_1_2.jpg";
-import Img_2_1 from "../../assets/images/collections/collection_2_1.jpg";
-import Img_2_2 from "../../assets/images/collections/collection_2_2.jpg";
-import Img_3_1 from "../../assets/images/collections/collection_3_1.jpg";
-import Img_3_2 from "../../assets/images/collections/collection_3_2.jpg";
+import React, { useState } from "react";
+
 import Slider from "../reusable/Slider";
 import ImageWithHoverEffect from "../reusable/ImageWithHoverEffect";
+import data from "../../data/db";
 
 const OurCollectionSection = () => {
-  const collections = [
-    {
-      title: "All Coffee",
-      images: [Img_1_1, Img_1_2],
-    },
-    {
-      title: "Clifton Tea",
-      images: [Img_2_1, Img_2_2],
-    },
-    {
-      title: "Clifton Merchandise",
-      images: [Img_3_1, Img_3_2],
-    },
-    {
-      title: "Clifton Hot Chocolate",
-      images: [Img_2_2, Img_3_2],
-    },
-  ];
+  const [collections, setCollections] = useState(data.collections)
 
   const TopContent = (item) => {
     return (
@@ -50,7 +29,7 @@ const OurCollectionSection = () => {
   };
 
   return (
-    <div className="flex font-barlow flex-col py-4 sm:py-6 lg:py-8 xl:py-10   gap-6 sm:gap-4 lg:gap-6 xl:gap-5 ">
+    <div className="flex font-barlow flex-col py-4 sm:py-6 lg:py-8 xl:py-10 lg:px-4  gap-6 sm:gap-4 lg:gap-6 xl:gap-5 bg-[color:var(--color-light-grey-2)] ">
       <h2 className="text-center text-primary font-normal tracking-tighter text-70 ">
         Our Collections
       </h2>

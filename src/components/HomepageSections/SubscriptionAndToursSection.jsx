@@ -40,9 +40,9 @@ const SubscriptionAndToursSection = () => {
   };
 
   return (
-    <div className="" style={{ fontFamily: "Barlow, sans-serif" }}>
+    <div className="bg-[color:var(--color-light-grey-2)]">
       {/* Top Section - Subscriptions & Brazil Trip */}
-      <div className="bg-gray-50 grid grid-cols-1 lg:grid-cols-2 py-6 sm:py-8 lg:py-8 px-4 sm:px-6 lg:px-8 gap-4 sm:gap-6 lg:gap-8 rounded-2xl mb-8 sm:mb-12 lg:mb-16 shadow-sm">
+      <div className=" grid grid-cols-1 lg:grid-cols-2 py-6 sm:py-8 lg:py-8 px-4 gap-4 sm:gap-6 lg:gap-8 rounded-2xl mb-8 sm:mb-12 lg:mb-16">
         {/* Subscriptions */}
         <div className="w-full h-[400px] sm:h-[350px] lg:h-[634px] overflow-hidden rounded-2xl   duration-300">
           <ImageWithHoverEffect
@@ -75,7 +75,7 @@ const SubscriptionAndToursSection = () => {
       </div>
 
       {/* Bottom Section - Virtual Tours */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 px-4 sm:px-6 lg:px-8 gap-8 sm:gap-10 lg:gap-16 mt-8 sm:mt-12 lg:mt-16 items-center ">
+      <div className="grid grid-cols-1 lg:grid-cols-2 px-4 gap-8 sm:gap-10 lg:gap-16 mt-8 sm:mt-12 lg:mt-16 items-center bg-[color:var(--color-light-grey-2)] ">
         {/* Virtual Tours Content */}
         <div className="flex flex-col justify-center items-center  text-center order-2 lg:order-1 ">
           <h2 className="font-normal font-barlow text-70 text-gray-900 mb-4 sm:mb-6 leading-tight">

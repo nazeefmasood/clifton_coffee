@@ -192,6 +192,29 @@ img {
   /* ~14px */
   --text-16: clamp(1rem, 0.3vw + 0.9375rem, 1rem);
   /* ~16px */
+
+
+
+  --color-light-grey-1: #F5F5F5;
+  --color-light-grey-2: #F6F8F2;
+  --color-light-grey-3: #F0EFE9;
+  --color-light-grey-4: #D9D9D9;
+  --color-dark-grey-4: #E0E1DA;
+  --color-black-shade: #0A0A09;
+  --color-light-green-1: #F6F8F2;
+  --color-light-green-2: #E0E3CE;
+  --color-light-green-3: #EAEBE4;
+  --color-medium-green-3: #C5C9AD;
+  --color-medium-green-4: #E0E1DA;
+  --color-dark-gray: #4A4A4A;
+  --color-light-green-gray: #D6DBDA;
+  --color-warm-light-green-beige: #D3D3CB;
+  --color-soft-cream-gray: #E6E4DF;
+  --color-muted-seafoam-gray: #C9D0CE;
+  --color-gentle-stone-gray: #BFC5C3;
+  --color-light-sand-beige: #E0DDD5;
+  --color-pale-sage-gray: #DADFD6;
+  --color-off-white-warm: #F0EEE9;
 }
 
 ::-webkit-scrollbar {

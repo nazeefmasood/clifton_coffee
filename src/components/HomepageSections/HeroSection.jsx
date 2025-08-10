@@ -19,14 +19,13 @@ const HeroSection = () => {
         poster=""
       >
         <source src={BG_Video} type="video/mp4" />
-        {/* Fallback for browsers that don't support video */}
+      
         <div className="absolute inset-0 bg-gray-900"></div>
       </video>
 
-      {/* Dark Overlay with responsive opacity */}
       <div className="absolute inset-0 bg-[rgba(0,0,0,0.4)] sm:bg-opacity-70 lg:bg-opacity-75 z-10"></div>
 
-      {/* Header Section - Fixed on top */}
+
       <div className="absolute top-0 left-0 w-full z-50">
         <HeaderSection />
       </div>

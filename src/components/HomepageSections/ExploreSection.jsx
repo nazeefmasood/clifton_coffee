@@ -10,14 +10,15 @@ import Img_3_1 from "../../assets/images/collections/collection_3_1.jpg";
 import Img_3_2 from "../../assets/images/collections/collection_3_2.jpg";
 import ImageWithHoverEffect from "../reusable/ImageWithHoverEffect";
 import Button from "../reusable/Button";
+import data from "../../data/db";
 
 const ExploreSection = () => {
   const images = [Img_1_1, Img_1_2, Img_2_1, Img_2_2, Img_3_1, Img_3_2];
   const [showPartialNext, setShowPartialNext] = useState(true);
+  const [items, setItems] = useState(data.exploreSection.items);
 
   useEffect(() => {
     const handleResize = () => {
-      // Set showPartialNext to false for screens smaller than laptop size (1024px)
       if (window.innerWidth < 1280) {
         setShowPartialNext(false);
       } else {
@@ -29,28 +30,7 @@ const ExploreSection = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const items = [
-    {
-      title: "Clifton Capsules",
-      description:
-        "The wait is finally over, our capsules are back and better than ever. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-    },
-    {
-      title: "Clifton Coffee",
-      description:
-        "Through the changing tides of history, this practice has maintained its place in both professional and creative worlds. Its influence has reached beyond its origins, shaping how we communicate ideas. What began as a practical solution has become a timeless standard, a foundation for countless innovations that followed.Why does it still matter today?",
-    },
-    {
-      title: "Clifton Tea",
-      description:
-        "Centuries have passed, yet the structure remains steady, even as technology has shifted the way we share information. It was embraced in printing houses, carried into typewriters, and eventually embedded into modern publishing software. Its survival is a testament to its adaptability and enduring relevance.Why do people continue to trust it?",
-    },
-    {
-      title: "Clifton Chocolate",
-      description:
-        " It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Why do we use it?",
-    },
-  ];
+
 
   const BannerTopContent = () => {
     return (
@@ -77,7 +57,7 @@ const ExploreSection = () => {
   };
 
   return (
-    <div className="w-full min-h-screen font-barlow">
+    <div className="w-full min-h-screen font-barlow bg-[colore:var(--color-light-green-2)]">
       {/* Banner Section - Fully responsive heights */}
       <div className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] min-h-[400px] max-h-[800px]">
         <ImageWithHoverEffect
@@ -87,7 +67,7 @@ const ExploreSection = () => {
         />
       </div>
 
-      <div className="bg-[#E0E1DA] h-max  lg:h-[750px] xl:h-[900px] min-2xl:h-[800px] overflow-hidden">
+      <div className=" h-max  lg:h-[750px] xl:h-[900px] min-2xl:h-[800px] overflow-hidden">
         <Slider
           items={items}
           itemsToShow={1}
@@ -113,7 +93,7 @@ const ExploreSection = () => {
                   </p>
                   {isActive && (
                     <Button
-                    text="Read More"
+                      text="Read More"
                       bg="bg-transparent"
                       hoverBg="hover:bg-black"
                       border="border-black"

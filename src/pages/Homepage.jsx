@@ -41,7 +41,7 @@ const Homepage = () => {
   }, []); // Empty dependency array means this effect runs once on mount
 
   return (
-    <>
+    <div className="font-barlow">
       <HeroSection />
       <OurCollectionSection />
       <NewProductsSection />
@@ -52,7 +52,7 @@ const Homepage = () => {
       <SocialMediaSection />
       <NewsletterSection />
       <FooterSection />
-    </>
+    </div>
   );
 };
 

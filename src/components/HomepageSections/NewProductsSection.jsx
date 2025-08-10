@@ -1,22 +1,6 @@
 import { useState } from "react";
 import Slider from "../reusable/Slider";
-
-import Coffee_Product_Collage_1 from "../../assets/images/newproducts/coffee_1.png";
-import Coffee_Product_Collage_2 from "../../assets/images/newproducts/coffee_2.jpg";
-import Coffee_Product_Collage_3 from "../../assets/images/newproducts/coffee_3.jpg";
-import Coffee_Product_Collage_4 from "../../assets/images/newproducts/coffee_4.jpg";
-import Capsule_Product_Collage_1 from "../../assets/images/newproducts/capsule_1.jpg";
-
-import P_1 from "../../assets/images/products/product_1.jpg";
-import P_2 from "../../assets/images/products/product_2.jpg";
-import P_3 from "../../assets/images/products/product_3.jpg";
-import P_4 from "../../assets/images/products/product_4.jpg";
-import P_5 from "../../assets/images/products/product_5.jpg";
-import P_6 from "../../assets/images/products/product_6.jpg";
-import P_7 from "../../assets/images/products/product_5.jpg";
-import P_8 from "../../assets/images/products/product_4.jpg";
-import P_9 from "../../assets/images/products/product_3.jpg";
-import P_10 from "../../assets/images/products/product_2.jpg";
+import mydata from "../../data/db";
 
 const Collage = ({ images }) => {
   if (!images || images.length === 0) return null;
@@ -70,110 +54,12 @@ const Collage = ({ images }) => {
 // Main component
 const NewProductsSection = () => {
   const [activeTab, setActiveTab] = useState("Coffee");
-
-  const data = {
-    Coffee: {
-      collageImages: [
-        Coffee_Product_Collage_1,
-        Coffee_Product_Collage_2,
-        Coffee_Product_Collage_3,
-        Coffee_Product_Collage_4,
-      ],
-      products: [
-        {
-          id: 1,
-          title: "Panama Coffee",
-          description:
-            "Introducing El Vergel Estate, a vibrant new coffee from the Bayter family's innovative farm in Fresno, Tolima. This Red and Yellow Caturra variety.",
-          price: "13.50",
-          image: P_1,
-        },
-        {
-          id: 2,
-          title: "Peru Coffee",
-          description:
-            "Introducing El Vergel Estate, a vibrant new coffee from the Bayter family's innovative farm in Fresno, Tolima. This Red and Yellow Caturra variety.",
-          price: "13.50",
-          image: P_2,
-        },
-        {
-          id: 3,
-          title: "Colombian Coffee",
-          description:
-            "Rich and full-bodied coffee with chocolate undertones from the highlands of Colombia.",
-          price: "15.50",
-          image: P_4,
-        },
-      ],
-    },
-    Capsule: {
-      collageImages: [Capsule_Product_Collage_1],
-      products: [
-        {
-          id: 1,
-          title: "Intense Capsule",
-          description:
-            "Bold and robust flavor profile perfect for espresso lovers who enjoy a strong kick.",
-          price: "8.50",
-          image: P_3,
-        },
-        {
-          id: 2,
-          title: "Smooth Capsule",
-          description:
-            "Balanced and mellow taste with subtle notes of caramel and nuts.",
-          price: "8.50",
-          image: P_5,
-        },
-        {
-          id: 3,
-          title: "Decaf Capsule",
-          description:
-            "All the flavor without the caffeine, perfect for evening enjoyment.",
-          price: "9.50",
-          image: P_2,
-        },
-      ],
-    },
-    All: {
-      collageImages: [
-        Capsule_Product_Collage_1,
-        Coffee_Product_Collage_2,
-        Coffee_Product_Collage_4,
-      ],
-      products: [
-        {
-          id: 1,
-          title: "Starter Pack",
-          description:
-            "A curated selection of our most popular coffees and capsules for beginners.",
-          price: "25.00",
-          image: P_10,
-        },
-        {
-          id: 2,
-          title: "Premium Bundle",
-          description:
-            "Our finest selection including rare single origins and exclusive blends.",
-          price: "45.00",
-          image: P_6,
-        },
-        {
-          id: 3,
-          title: "Monthly Subscription",
-          description:
-            "Get fresh coffee delivered monthly with our flexible subscription service.",
-          price: "30.00",
-          image: P_7,
-        },
-      ],
-    },
-  };
+  const [data, setData] = useState(mydata.newProducts.data);
 
   const tabs = ["Coffee", "Capsule", "All"];
 
   return (
-    <div className="flex font-barlow flex-col px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-8 sm:py-12 lg:py-16 gap-8 sm:gap-10 lg:gap-12 overflow-hidden">
+    <div className="flex font-barlow flex-col lg:px-4   py-8 sm:py-12 lg:py-16 gap-8 sm:gap-10 lg:gap-12 overflow-hidden bg-[color:var(--color-light-grey-2)]">
       {/* Header Section */}
       <div className="text-center space-y-4">
         <h2 className="font-normal text-gray-900 text-70 ">New Products</h2>
@@ -236,14 +122,14 @@ const NewProductsSection = () => {
               renderItem={(item, index) => {
                 // Define background colors for variety
                 const bgColors = [
-                  "bg-[#D6DBDA]", // Light green-gray
-                  "bg-[#D3D3CB]", // Warm light green-beige
-                  "bg-[#E6E4DF]", // Soft cream-gray
-                  "bg-[#C9D0CE]", // Muted seafoam gray
-                  "bg-[#BFC5C3]", // Gentle stone gray
-                  "bg-[#E0DDD5]", // Light sand beige
-                  "bg-[#DADFD6]", // Pale sage-gray
-                  "bg-[#F0EEE9]", // Off-white warm tone
+                  "bg-[color:var(--color-light-green-gray)]",
+                  "bg-[color:var(--color-warm-light-green-beige)]",
+                  "bg-[color:var(--color-soft-cream-gray)]",
+                  "bg-[color:var(--color-muted-seafoam-gray)]",
+                  "bg-[color:var(--color-gentle-stone-gray)]",
+                  "bg-[color:var(--color-light-sand-beige)]",
+                  "bg-[color:var(--color-pale-sage-gray)]",
+                  "bg-[color:var(--color-off-white-warm)]",
                 ];
                 const bgColor = bgColors[index % bgColors.length];
 
