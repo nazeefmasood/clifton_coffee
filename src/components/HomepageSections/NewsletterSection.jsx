@@ -3,7 +3,7 @@ import React from "react";
 
 const NewsletterSection = () => {
   return (
-    <div className="bg-[color:var(--color-dark-grey-4)] h-[400px] lg:h-[500px]  flex flex-col justify-center items-center leading-tight overflow-hidden px-4 sm:px-6 lg:px-10 py-12 sm:py-16 gap-8 lg:gap-10">
+    <section className="bg-[color:var(--color-dark-grey-4)] h-[400px] lg:h-[500px]  flex flex-col justify-center items-center leading-tight overflow-hidden px-4 sm:px-6 lg:px-10 py-12 sm:py-16 gap-8 lg:gap-10">
       {/* Content */}
       <div className="text-center max-w-2xl">
         <h3 className="font-barlow font-normal text-70 text-primary mb-4 tracking-tighter">
@@ -30,7 +30,7 @@ const NewsletterSection = () => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

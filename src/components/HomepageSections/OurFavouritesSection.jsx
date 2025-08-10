@@ -75,7 +75,7 @@ const OurFavouritesSection = () => {
   const decrementQuantity = () => setQuantity((prev) => Math.max(1, prev - 1));
 
   return (
-    <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10 overflow-hidden bg-[color:var(--color-light-grey-2)] lg:px-4">
+    <section className="flex flex-col gap-6 sm:gap-8 lg:gap-10 overflow-hidden bg-[color:var(--color-light-grey-2)] lg:px-4">
       <div className="px-2">
         <h2 className="text-center font-barlow font-normal text-70 mt-10 sm:mt-0 tracking-tighter">
           Our Favorites
@@ -622,7 +622,7 @@ const OurFavouritesSection = () => {
           </div>
         </div>
       )}
-    </div>
+    </se>
   );
 };
 

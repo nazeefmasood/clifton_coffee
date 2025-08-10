@@ -9,7 +9,7 @@ const HeroSection = () => {
       style={{ fontFamily: "var(--font-barlow)" }}
     >
       {/* Background Video */}
-
+      
       <video
         autoPlay
         muted

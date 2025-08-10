@@ -8,7 +8,7 @@ const SocialMediaSection = () => {
   const [images, setImages] = useState(data.socialmedia.images);
 
   return (
-    <div className="flex flex-col  gap-6 sm:gap-8 lg:gap-12 overflow-hidden py-4 sm:py-6 lg:py-8 lg:px-4 bg-[color:var(--color-light-grey-2)]">
+    <section className="flex flex-col  gap-6 sm:gap-8 lg:gap-12 overflow-hidden py-4 sm:py-6 lg:py-8 lg:px-4 bg-[color:var(--color-light-grey-2)]">
       {/* Header Section */}
       <div className="px-4 sm:px-6 lg:px-8">
         <h2 className="text-center  mb-2 sm:mb-4 text-36 font-normal font-barlow underline underline-offset-8 cursor-pointer">
@@ -58,7 +58,7 @@ const SocialMediaSection = () => {
           }}
         />
       </div>
-    </div>
+    </se>
   );
 };
 

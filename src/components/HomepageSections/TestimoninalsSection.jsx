@@ -7,7 +7,7 @@ const TestimonialsSection = () => {
   const [reviews, setReviews] = useState(data.reviews);
 
   return (
-    <div className="flex flex-col py-8 sm:py-12 lg:py-16 gap-8 lg:px-4 sm:gap-12 lg:gap-16   mx-auto bg-[color:var(--color-light-grey-2)]">
+    <section className="flex flex-col py-8 sm:py-12 lg:py-16 gap-8 lg:px-4 sm:gap-12 lg:gap-16   mx-auto bg-[color:var(--color-light-grey-2)]">
       <h2 className="text-center leading-tight font-barlow font-normal text-70 tracking-tighter">
         Thousands of 5 Star Reviews
       </h2>
@@ -65,7 +65,7 @@ const TestimonialsSection = () => {
           )}
         />
       </div>
-    </div>
+    </sec>
   );
 };
 

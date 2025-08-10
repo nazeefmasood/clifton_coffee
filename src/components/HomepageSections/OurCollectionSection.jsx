@@ -29,7 +29,7 @@ const OurCollectionSection = () => {
   };
 
   return (
-    <div className="flex font-barlow flex-col py-4 sm:py-6 lg:py-8 xl:py-10 lg:px-4  gap-6 sm:gap-4 lg:gap-6 xl:gap-5 bg-[color:var(--color-light-grey-2)] ">
+    <section className="flex font-barlow flex-col py-4 sm:py-6 lg:py-8 xl:py-10 lg:px-4  gap-6 sm:gap-4 lg:gap-6 xl:gap-5 bg-[color:var(--color-light-grey-2)] ">
       <h2 className="text-center text-primary font-normal tracking-tighter text-70 ">
         Our Collections
       </h2>
@@ -60,7 +60,7 @@ const OurCollectionSection = () => {
           )}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -59,7 +59,7 @@ const NewProductsSection = () => {
   const tabs = ["Coffee", "Capsule", "All"];
 
   return (
-    <div className="flex font-barlow flex-col lg:px-4   py-8 sm:py-12 lg:py-16 gap-8 sm:gap-10 lg:gap-12 overflow-hidden bg-[color:var(--color-light-grey-2)]">
+    <section className="flex font-barlow flex-col lg:px-4   py-8 sm:py-12 lg:py-16 gap-8 sm:gap-10 lg:gap-12 overflow-hidden bg-[color:var(--color-light-grey-2)]">
       {/* Header Section */}
       <div className="text-center space-y-4">
         <h2 className="font-normal text-gray-900 text-70 ">New Products</h2>
@@ -176,7 +176,7 @@ const NewProductsSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </sec>
   );
 };
 

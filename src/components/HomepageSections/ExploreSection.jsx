@@ -57,7 +57,7 @@ const ExploreSection = () => {
   };
 
   return (
-    <div className="w-full min-h-screen font-barlow bg-[colore:var(--color-light-green-2)]">
+    <section className="w-full min-h-screen font-barlow bg-[colore:var(--color-light-green-2)]">
       {/* Banner Section - Fully responsive heights */}
       <div className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] min-h-[400px] max-h-[800px]">
         <ImageWithHoverEffect
@@ -123,7 +123,7 @@ const ExploreSection = () => {
           }}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

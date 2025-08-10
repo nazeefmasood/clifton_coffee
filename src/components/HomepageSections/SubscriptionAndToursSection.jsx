@@ -40,7 +40,7 @@ const SubscriptionAndToursSection = () => {
   };
 
   return (
-    <div className="bg-[color:var(--color-light-grey-2)]">
+    <section className="bg-[color:var(--color-light-grey-2)]">
       {/* Top Section - Subscriptions & Brazil Trip */}
       <div className=" grid grid-cols-1 lg:grid-cols-2 py-6 sm:py-8 lg:py-8 px-4 gap-4 sm:gap-6 lg:gap-8 rounded-2xl mb-8 sm:mb-12 lg:mb-16">
         {/* Subscriptions */}
@@ -112,7 +112,7 @@ const SubscriptionAndToursSection = () => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
