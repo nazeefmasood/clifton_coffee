@@ -117,24 +117,14 @@ const OurFavouritesSection = () => {
   ];
 
   return (
-    <div
-      className="flex flex-col mt-6 sm:mt-8 lg:mt-10 gap-6 sm:gap-8 lg:gap-10 overflow-hidden bg-[#F6F8F2] p-4 sm:p-6 lg:p-8"
-      style={{ fontFamily: "Barlow, sans-serif" }}
-    >
+    <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10 overflow-hidden bg-[#F6F8F2]  lg:p-8">
       <div className="px-2">
-        <h2
-          className="text-center font-black"
-          style={{
-            fontFamily: "Barlow, sans-serif",
-            fontSize: "clamp(3rem, 6vw + 1rem, 4.375rem)",
-            fontWeight: 900,
-          }}
-        >
+        <h2 className="text-center font-barlow font-normal text-70 mt-10 sm:mt-0 tracking-tighter">
           Our Favorites
         </h2>
       </div>
 
-      <div className="w-full h-[500px] sm:h-[600px] lg:h-[700px]">
+      <div className="w-full h-max sm:h-[600px] lg:h-max">
         <Slider
           items={products}
           showArrows={true}
@@ -144,7 +134,7 @@ const OurFavouritesSection = () => {
           showPagination={false}
           renderItem={(item) => {
             return (
-              <div className="flex h-[500px] sm:h-[600px] lg:h-[700px] flex-col gap-3 sm:gap-4 lg:gap-5 p-3 sm:p-4 lg:p-6 relative group overflow-hidden rounded-xl">
+              <div className="flex h-[500px] sm:h-[600px] lg:h-[700px] flex-col  relative group overflow-hidden rounded-xl">
                 {/* Hover Overlay - covers entire card */}
                 <div className="absolute inset-0 bg-[rgba(224,225,218,0.95)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-around p-3 sm:p-4 lg:p-6 rounded-xl z-20">
                   {/* Top Section - Product Details */}
@@ -281,7 +271,7 @@ const OurFavouritesSection = () => {
                     <img
                       src={item.image}
                       alt={item.desc}
-                      className="w-full h-full object-cover transition-transform duration-500 rounded-xl group-hover:scale-105"
+                      className="w-full h-full aspect-square lg:aspect-5/6 object-cover transition-transform duration-500 rounded-xl group-hover:scale-105"
                       style={{ maxWidth: "100%", maxHeight: "100%" }}
                       loading="lazy"
                     />
@@ -289,7 +279,7 @@ const OurFavouritesSection = () => {
                 </div>
 
                 {/* Text - Hidden on hover */}
-                <div className="flex-shrink-0 flex flex-col justify-center items-center relative z-10 group-hover:opacity-0 transition-opacity duration-300 py-2">
+                <div className="flex-1 flex flex-col justify-top mt-5 items-center relative z-10 group-hover:opacity-0 transition-opacity duration-300 py-2">
                   <p
                     className="font-medium mb-1"
                     style={{

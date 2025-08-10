@@ -104,15 +104,16 @@ const ExploreSection = () => {
             return (
               <div className="w-full h-[650px] sm:h-[900px] lg:h-[700px] xl:h-[800px] min-2xl:h-[800px] flex flex-col-reverse  lg:flex-row overflow-hidden sm:flex-col-reverse">
                 {/* Left side - Content */}
-                <div className="flex lg:flex-1 flex-col  justify-center items-center xl:items-start lg:justify-start p-4 sm:p-6 md:p-8 lg:p-4 mt-8 sm:mt-10 md:mt-12 lg:mt-14">
+                <div className="flex lg:flex-1 flex-col  justify-center items-center xl:items-start xl:justify-start p-4 sm:p-6 md:p-8 lg:p-4 mt-8 sm:mt-10 md:mt-12 lg:mt-18">
                   <h2 className="font-barlow font-normal mb-4 text-36 sm:text-48 md:text-56 xl:text-70 sm:mb-6 text-gray-800 leading-tight lg:leading-tighter tracking-tight lg:tracking-tighter ">
                     {item.title}
                   </h2>
-                  <p className="font-barlow text-center  text-gray-600 text-14 sm:text-16 lg:text-18 leading-relaxed mb-6 sm:mb-8 font-normal max-w-full lg:max-w-2xl">
+                  <p className="font-barlow text-center xl:text-start  text-gray-600 text-14 sm:text-16 lg:text-18 leading-relaxed mb-6 sm:mb-8 font-normal max-w-full lg:max-w-2xl">
                     {item.description}
                   </p>
                   {isActive && (
                     <Button
+                    text="Read More"
                       bg="bg-transparent"
                       hoverBg="hover:bg-black"
                       border="border-black"
@@ -126,7 +127,7 @@ const ExploreSection = () => {
                 </div>
 
                 {/* Right side - Image */}
-                <div className="flex-1 w-full h-full z-30 flex items-center justify-center p-0  lg:p-4 relative mt-6 sm:mt-8 md:mt-10 bg-amber-100">
+                <div className="flex-1 w-full h-full z-30 flex items-center justify-center p-0  lg:p-4 relative mt-6 sm:mt-8 md:mt-10 ">
                   <div className="absolute inset-0    xl:bottom-20 overflow-hidden p-6">
                     {isActive && (
                       <img

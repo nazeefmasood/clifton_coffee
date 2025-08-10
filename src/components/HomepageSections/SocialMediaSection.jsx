@@ -29,24 +29,10 @@ const SocialMediaSection = () => {
     >
       {/* Header Section */}
       <div className="px-4 sm:px-6 lg:px-8">
-        <h2
-          className="text-center font-black mb-2 sm:mb-4"
-          style={{
-            fontFamily: "Barlow, sans-serif",
-            fontSize: "clamp(3rem, 6vw + 1rem, 4.375rem)",
-            fontWeight: 900,
-          }}
-        >
+        <h2 className="text-center  mb-2 sm:mb-4 text-36 font-normal font-barlow underline underline-offset-8 cursor-pointer">
           @cliftoncoffee
         </h2>
-        <p
-          className="text-center font-normal text-gray-600"
-          style={{
-            fontFamily: "Barlow, sans-serif",
-            fontSize: "clamp(1rem, 0.5vw + 0.875rem, 1.125rem)",
-            fontWeight: 400,
-          }}
-        >
+        <p className="text-center font-normal text-gray-600 font-barlow text-18 pointer-events-none">
           Follow us on Instagram for the latest updates!
         </p>
       </div>

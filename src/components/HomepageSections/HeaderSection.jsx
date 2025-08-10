@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ChevronDown, Search, ShoppingCart, User, Menu, X } from "lucide-react";
 import Logo from "../../assets/images/logo.png";
 import data from "../../data/db.js";
+import Button from "../reusable/Button";
 
 const HeaderSection = () => {
   const [rightMenus, setRightMenu] = useState(
@@ -101,6 +102,7 @@ const HeaderSection = () => {
     setActiveRightMenu(null);
   };
 
+  console.log(leftMenus[activeMenu]?.submenu?.categories.length);
   return (
     <div className="relative z-50" style={{ fontFamily: "var(--font-barlow)" }}>
       {/* Announcement Bar */}
@@ -307,10 +309,10 @@ const HeaderSection = () => {
                   {/* Categories Section */}
                   <div className="col-span-6">
                     <div
-                      className={`grid grid-cols-1 gap-6 lg:gap-8 lg:grid-cols-${
+                      className={`grid grid-cols-1 gap-6 lg:gap-8   ${
                         leftMenus[activeMenu]?.submenu?.categories.length < 2
-                          ? 2
-                          : leftMenus[activeMenu]?.submenu?.categories.length
+                          ? "lg:grid-cols-2"
+                          : "lg:grid-cols-3"
                       }`}
                     >
                       {leftMenus[activeMenu]?.submenu?.categories?.map(
@@ -724,30 +726,27 @@ const HeaderSection = () => {
 
       {/* Search Overlay */}
       {isSearchOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-start justify-center pt-20">
-          <div className="w-full max-w-4xl px-4">
-            <div className="relative">
-              <button
-                onClick={closeAllOverlays}
-                className="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors"
-              >
-                <X size={32} />
-              </button>
-
-              <div className="text-center mb-8">
-                <h2 className="text-white text-3xl md:text-4xl font-light mb-8">
-                  Start search
-                </h2>
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder=""
-                    className="w-full bg-transparent border-b-2 border-white text-white text-xl md:text-2xl py-4 px-0 focus:outline-none focus:border-gray-300 placeholder-transparent"
-                    autoFocus
-                  />
-                </div>
+        <div className="fixed inset-0 bg-black/95 bg-opacity-95 z-50 flex items-center justify-center pt-20">
+          <button
+            onClick={closeAllOverlays}
+            className="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors"
+          >
+            <X size={32} />
+          </button>
+          <div className="w-full max-w-4xl px-4 relative">
+            <div className="text-center mb-8">
+              <h2 className="text-white text-3xl md:text-4xl font-light mb-8">
+                Start search
+              </h2>
+              <div className="relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder=""
+                  className="w-full bg-transparent border-b-2 border-white text-white text-xl md:text-2xl py-4 px-0 focus:outline-none focus:border-gray-300 placeholder-transparent"
+                  autoFocus
+                />
               </div>
 
               {searchQuery && (
@@ -781,21 +780,21 @@ const HeaderSection = () => {
         <div className="fixed inset-0 z-50 overflow-hidden">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black bg-opacity-50"
+            className="absolute inset-0 bg-black/50 bg-opacity-50"
             onClick={closeAllOverlays}
           ></div>
 
           {/* Sidebar */}
-          <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl">
+          <div className="absolute right-0 top-0 h-full w-full max-w-2xl bg-white shadow-2xl">
             <div className="flex flex-col h-full">
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b">
-                <h2 className="text-xl font-semibold">Shopping Cart (0)</h2>
+                <h2 className="text-25 font-semibold">Shopping Cart (0)</h2>
                 <button
                   onClick={closeAllOverlays}
                   className="text-gray-400 hover:text-gray-600 transition-colors"
                 >
-                  <X size={24} />
+                  <X size={32} />
                 </button>
               </div>
 
@@ -807,12 +806,17 @@ const HeaderSection = () => {
                       Your cart is currently empty.
                     </p>
                   </div>
-                  <button
-                    onClick={closeAllOverlays}
-                    className="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors"
-                  >
-                    Continue Browsing
-                  </button>
+                  <Button
+                    text="Continue Browsing"
+                    bg="bg-black/90"
+                    hoverBg="hover:bg-black"
+                    border="border-black"
+                    hoverBorder="hover:border-black"
+                    textColor="text-white"
+                    hoverTextColor="hover:text-white"
+                    paddingX={"px-8 sm:px-10"}
+                    paddingY="py-2 sm:py-3"
+                  />
                 </div>
               </div>
             </div>

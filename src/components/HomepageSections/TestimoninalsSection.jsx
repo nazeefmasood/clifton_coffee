@@ -56,21 +56,14 @@ const TestimonialsSection = () => {
 
   return (
     <div
-      className="flex flex-col py-8 sm:py-12 lg:py-16 gap-8 sm:gap-12 lg:gap-16 px-4 sm:px-6 lg:px-8  mx-auto"
+      className="flex flex-col py-8 sm:py-12 lg:py-16 gap-8 sm:gap-12 lg:gap-16   mx-auto"
       style={{ fontFamily: "Barlow, sans-serif" }}
     >
-      <h2
-        className="text-center font-black leading-tight"
-        style={{
-          fontFamily: "Barlow, sans-serif",
-          fontSize: "clamp(3rem, 6vw + 1rem, 4.375rem)",
-          fontWeight: 900,
-        }}
-      >
+      <h2 className="text-center leading-tight font-barlow font-normal text-70 tracking-tighter">
         Thousands of 5 Star Reviews
       </h2>
 
-      <div className="w-full h-[250px] sm:h-[280px] lg:h-[400px] overflow-hidden">
+      <div className="w-full h-[350px] md:h-[480px] lg:h-[450px] overflow-hidden">
         <Slider
           items={reviews}
           itemsToShow={3}
@@ -81,61 +74,44 @@ const TestimonialsSection = () => {
           showPartialNext={true}
           partialNextPercent={0}
           renderItem={(item) => (
-            <div className="w-full h-[220px] sm:h-[250px] lg:h-[290px] bg-[#C4C4C2] flex flex-col justify-between overflow-hidden p-4 sm:p-6 lg:p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-              {/* Star Rating */}
-              <div className="flex mb-2">
-                {Array(item.rating)
-                  .fill()
-                  .map((_, id) => (
-                    <Star
-                      key={id}
-                      color="#000"
-                      fill="#000"
-                      size={16}
-                      className="sm:w-5 sm:h-5"
-                    />
-                  ))}
+            <div className="w-full h-[250px] sm:h-[260px] lg:h-[280px] bg-[#C4C4C2] flex flex-col justify-center items-center overflow-hidden p-4 sm:p-6 lg:p-8 rounded-xl    duration-300 xl:justify-between xl:items-start hover:scale-[1.02]">
+              <div className="flex flex-col justify-center items-center   xl:justify-between xl:items-start">
+                <div className="flex mb-2">
+                  {Array(item.rating)
+                    .fill()
+                    .map((_, id) => (
+                      <Star
+                        key={id}
+                        color="#000"
+                        fill="#000"
+                        size={16}
+                        className="sm:w-5 sm:h-5"
+                      />
+                    ))}
+                </div>
+                <h3 className="font-semibold leading-tight text-18 font-barlow mt-4">
+                  {item.title}
+                </h3>
               </div>
 
               {/* Content */}
-              <div className="flex flex-col gap-2 sm:gap-3 flex-1 min-h-0">
-                <h3
-                  className="font-semibold leading-tight"
-                  style={{
-                    fontFamily: "Barlow, sans-serif",
-                    fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {item.title}
-                </h3>
+              <div className="flex flex-col gap-2 sm:gap-3 flex-1 min-h-0 justify-center items-center xl:justify-between xl:items-start mt-3">
+                <p className="font-normal leading-relaxed flex-1 overflow-hidden text-center xl:text-start font-barlow text-16">
+                  {item.text}
+                </p>
                 <p
-                  className="font-normal leading-relaxed flex-1 overflow-hidden"
+                  className="font-medium mt-auto pt-2"
                   style={{
                     fontFamily: "Barlow, sans-serif",
                     fontSize: "clamp(0.875rem, 2vw, 1rem)",
-                    fontWeight: 400,
-                    display: "-webkit-box",
-                    WebkitLineClamp: "4",
-                    WebkitBoxOrient: "vertical",
-                    lineHeight: "1.5",
+                    fontWeight: 500,
                   }}
                 >
-                  {item.text}
+                  — {item.author}
                 </p>
               </div>
 
               {/* Author */}
-              <p
-                className="font-medium mt-auto pt-2"
-                style={{
-                  fontFamily: "Barlow, sans-serif",
-                  fontSize: "clamp(0.875rem, 2vw, 1rem)",
-                  fontWeight: 500,
-                }}
-              >
-                — {item.author}
-              </p>
             </div>
           )}
         />

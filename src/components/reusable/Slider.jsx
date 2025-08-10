@@ -1,4 +1,9 @@
-import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
+import {
+  ArrowBigLeft,
+  ArrowBigRight,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import React, { useState, useMemo, useCallback, useEffect } from "react";
 
 const Slider = ({
@@ -173,11 +178,9 @@ const Slider = ({
       if (itemIndex >= visibleStart && itemIndex < fullVisibleEnd) {
         return 1;
       }
-
       if (itemIndex >= fullVisibleEnd && itemIndex < visibleEnd) {
-        return 0.7; // Enhanced partial opacity
+        return 0.2;
       }
-
       return 1;
     },
     [currentIndex, effectiveItemsToShow, getItemsToShow, showPartialNext]
@@ -238,7 +241,7 @@ const Slider = ({
   // Enhanced responsive arrow system
   const getArrowClasses = useMemo(() => {
     const baseClasses =
-      "absolute top-1/2 -translate-y-1/2 rounded-full bg-white/90 hover:bg-white shadow-lg hover:shadow-xl transition-all duration-300 z-30 disabled:opacity-40 disabled:cursor-not-allowed backdrop-blur-sm border border-white/20";
+      "absolute top-1/2 -translate-y-1/2 rounded-full bg-black/90 hover:bg-black shadow-lg hover:shadow-xl transition-all duration-300 z-30 disabled:opacity-40 disabled:cursor-not-allowed backdrop-blur-sm border border-white/20";
 
     let sizeClasses, iconSize, positioning;
 
@@ -359,13 +362,7 @@ const Slider = ({
                   renderItem(item, idx, currentIndex, screenSize)
                 ) : (
                   <div className="w-full h-full rounded-lg flex items-center justify-center">
-                    <span
-                      className="text-gray-400 font-medium"
-                      style={{
-                        fontSize: "var(--text-18)",
-                        fontFamily: "var(--font-barlow)",
-                      }}
-                    >
+                    <span className="text-gray-400 font-medium text-18">
                       Item {idx + 1}
                     </span>
                   </div>
@@ -381,10 +378,10 @@ const Slider = ({
               onClick={showPreviousSlide}
               disabled={!showPagination && currentIndex === 0}
               className={`${arrowConfig.baseClasses} ${arrowConfig.sizeClasses} ${arrowConfig.positioning.left}`}
-              aria-label="Previous slide"
             >
-              <ArrowBigLeft
+              <ChevronLeft
                 size={arrowConfig.iconSize}
+                color="white"
                 className="text-gray-700"
               />
             </button>
@@ -394,9 +391,9 @@ const Slider = ({
                 !showPagination && currentIndex >= items.length - getItemsToShow
               }
               className={`${arrowConfig.baseClasses} ${arrowConfig.sizeClasses} ${arrowConfig.positioning.right}`}
-              aria-label="Next slide"
             >
-              <ArrowBigRight
+              <ChevronRight
+                color="white"
                 size={arrowConfig.iconSize}
                 className="text-gray-700"
               />
@@ -408,8 +405,6 @@ const Slider = ({
       {showPagination && totalPages > 1 && (
         <div
           className={`flex ${dotConfig.gap} justify-center items-center flex-shrink-0 z-30 ${paginationClasses} my-10`}
-          role="navigation"
-          aria-label="Slider pagination"
         >
           {Array.from({ length: totalPages }, (_, idx) => (
             <button
@@ -418,8 +413,6 @@ const Slider = ({
               className={`${dotConfig.base} ${dotConfig.size} ${
                 idx === currentPage ? dotConfig.active : dotConfig.inactive
               }`}
-              aria-label={`Go to slide ${idx + 1}`}
-              aria-current={idx === currentPage}
             />
           ))}
         </div>
