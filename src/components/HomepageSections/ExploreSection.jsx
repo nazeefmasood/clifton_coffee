@@ -82,7 +82,7 @@ const ExploreSection = () => {
             const isActive = i === Math.floor(currentIndex / 1);
 
             return (
-              <div className="w-full h-[650px] sm:h-[900px] lg:h-[700px] xl:h-[800px] min-2xl:h-[800px] flex flex-col-reverse  lg:flex-row overflow-hidden sm:flex-col-reverse">
+              <div className="w-full h-[700px]  sm:h-[900px] lg:h-[700px] xl:h-[800px] min-2xl:h-[800px] flex flex-col-reverse  lg:flex-row overflow-hidden sm:flex-col-reverse">
                 {/* Left side - Content */}
                 <div className="flex lg:flex-1 flex-col  justify-center items-center xl:items-start xl:justify-start p-4 sm:p-6 md:p-8 lg:p-4 mt-8 sm:mt-10 md:mt-12 lg:mt-18">
                   <h2 className="font-barlow font-normal mb-4 text-36 sm:text-48 md:text-56 xl:text-70 sm:mb-6 text-gray-800 leading-tight lg:leading-tighter tracking-tight lg:tracking-tighter ">
