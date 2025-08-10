@@ -173,21 +173,10 @@ const NewProductsSection = () => {
   const tabs = ["Coffee", "Capsule", "All"];
 
   return (
-    <div
-      className="flex flex-col px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-8 sm:py-12 lg:py-16 gap-8 sm:gap-10 lg:gap-12 overflow-hidden"
-      style={{ fontFamily: "var(--font-barlow)" }}
-    >
+    <div className="flex font-barlow flex-col px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-8 sm:py-12 lg:py-16 gap-8 sm:gap-10 lg:gap-12 overflow-hidden">
       {/* Header Section */}
       <div className="text-center space-y-4">
-        <h2
-          className="font-bold text-gray-900"
-          style={{
-            fontSize: "var(--text-70)",
-            lineHeight: "1.1",
-          }}
-        >
-          New Products
-        </h2>
+        <h2 className="font-normal text-gray-900 text-70 ">New Products</h2>
         <p
           className="font-normal text-gray-600 max-w-2xl mx-auto"
           style={{

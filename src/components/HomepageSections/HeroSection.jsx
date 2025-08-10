@@ -36,10 +36,7 @@ const HeroSection = () => {
         <div className="text-center text-white max-w-7xl mx-auto pt-24 sm:pt-28 lg:pt-32 xl:pt-36">
           {/* Main Heading */}
           <div className="mb-6 sm:mb-8 lg:mb-12">
-            <h1
-              className="font-normal leading-tight text-white mb-4 sm:mb-6 lg:mb-8"
-              style={{ fontSize: "var(--text-91)" }}
-            >
+            <h1 className="font-normal leading-tight text-70 xl:text-91 text-white mb-4 sm:mb-6 lg:mb-8">
               Bold Coffee Moments
             </h1>
           </div>

@@ -77,7 +77,7 @@ const SubscriptionAndToursSection = () => {
       {/* Bottom Section - Virtual Tours */}
       <div className="grid grid-cols-1 lg:grid-cols-2 px-4 sm:px-6 lg:px-8 gap-8 sm:gap-10 lg:gap-16 mt-8 sm:mt-12 lg:mt-16 items-center ">
         {/* Virtual Tours Content */}
-        <div className="flex flex-col justify-center items-center  text-center  ">
+        <div className="flex flex-col justify-center items-center  text-center order-2 lg:order-1 ">
           <h2 className="font-normal font-barlow text-70 text-gray-900 mb-4 sm:mb-6 leading-tight">
             Virtual Tours
           </h2>

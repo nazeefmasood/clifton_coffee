@@ -102,7 +102,6 @@ const HeaderSection = () => {
     setActiveRightMenu(null);
   };
 
-  console.log(leftMenus[activeMenu]?.submenu?.categories.length);
   return (
     <div className="relative z-50" style={{ fontFamily: "var(--font-barlow)" }}>
       {/* Announcement Bar */}
@@ -157,7 +156,7 @@ const HeaderSection = () => {
                         : "text-white hover:text-gray-200"
                     }`}
                   >
-                    <span className="font-bold text-18">{l_menu.title}</span>
+                    <span className="font-bold text-22">{l_menu.title}</span>
                     {l_menu.hasSubmenu && (
                       <ChevronDown
                         size={16}
@@ -174,7 +173,7 @@ const HeaderSection = () => {
             {/* Logo - Centered */}
             <div className="flex-shrink-0 flex-grow xl:flex-grow-0 flex justify-between xl:justify-center">
               <div
-                className={`w-36 h-12 sm:w-44 sm:h-12 lg:w-56 lg:h-16 xl:w-56 xl:h-24 overflow-hidden transition-all duration-300 ${
+                className={`w-36 h-12 sm:w-44 sm:h-12 md:h-16 lg:w-56 lg:h-20 xl:w-56 xl:h-24 mt-0 lg:mt-5 overflow-hidden transition-all duration-300 ${
                   isHeaderHovered ||
                   activeMenu !== null ||
                   activeRightMenu !== null ||
@@ -215,10 +214,10 @@ const HeaderSection = () => {
                           : "text-white hover:text-gray-200"
                       }`}
                     >
-                      <span className="font-bold text-18">{r_menu.title}</span>
+                      <span className="font-bold text-22">{r_menu.title}</span>
                       {r_menu.hasSubmenu && (
                         <ChevronDown
-                          size={16}
+                          size={18}
                           className={`transition-transform duration-200 ${
                             activeRightMenu === index ? "rotate-180" : ""
                           }`}
@@ -242,7 +241,7 @@ const HeaderSection = () => {
                       : "text-white hover:text-gray-200"
                   }`}
                 >
-                  <User size={18} className="lg:w-5 lg:h-5" />
+                  <User size={18} className="lg:w-7 lg:h-7" />
                 </button>
                 <button
                   onClick={toggleSearch}
@@ -256,7 +255,7 @@ const HeaderSection = () => {
                       : "text-white hover:text-gray-200"
                   } ${isSearchOpen ? "text-blue-600" : ""}`}
                 >
-                  <Search size={18} className="lg:w-5 lg:h-5" />
+                  <Search size={24} className="lg:w-7 lg:h-7" />
                 </button>
                 <button
                   onClick={toggleCart}
@@ -270,7 +269,7 @@ const HeaderSection = () => {
                       : "text-white hover:text-gray-200"
                   } ${isCartOpen ? "text-blue-600" : ""}`}
                 >
-                  <ShoppingCart size={18} className="lg:w-5 lg:h-5" />
+                  <ShoppingCart size={24} className="lg:w-7 lg:h-7" />
                 </button>
               </div>
             </div>
@@ -329,7 +328,7 @@ const HeaderSection = () => {
                                 <li key={itemIndex}>
                                   <a
                                     href="#"
-                                    className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 block py-2 px-3 rounded-md font-normal -mx-3"
+                                    className="text-gray-600 hover:text-gray-900 hover:underline underline-offset-8 transition-all duration-200 block py-2 px-3 rounded-md font-normal mx-3"
                                     style={{ fontSize: "var(--text-18)" }}
                                   >
                                     {item}
@@ -415,7 +414,7 @@ const HeaderSection = () => {
                                 <li key={itemIndex}>
                                   <a
                                     href="#"
-                                    className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 block py-2 px-3 rounded-md font-normal -mx-3"
+                                    className="text-gray-600 hover:text-gray-900 hover:underline underline-offset-8 transition-all duration-200 block py-2 px-3 rounded-md font-normal mx-3"
                                     style={{ fontSize: "var(--text-18)" }}
                                   >
                                     {item}
@@ -726,7 +725,7 @@ const HeaderSection = () => {
 
       {/* Search Overlay */}
       {isSearchOpen && (
-        <div className="fixed inset-0 bg-black/95 bg-opacity-95 z-50 flex items-center justify-center pt-20">
+        <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center pt-20">
           <button
             onClick={closeAllOverlays}
             className="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors"
@@ -735,16 +734,13 @@ const HeaderSection = () => {
           </button>
           <div className="w-full max-w-4xl px-4 relative">
             <div className="text-center mb-8">
-              <h2 className="text-white text-3xl md:text-4xl font-light mb-8">
-                Start search
-              </h2>
               <div className="relative">
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder=""
-                  className="w-full bg-transparent border-b-2 border-white text-white text-xl md:text-2xl py-4 px-0 focus:outline-none focus:border-gray-300 placeholder-transparent"
+                  placeholder="Start search"
+                  className="w-full bg-transparent border-b-2 border-white text-white text-xl md:text-2xl py-4 px-0 focus:outline-none focus:border-gray-300 placeholder-white"
                   autoFocus
                 />
               </div>

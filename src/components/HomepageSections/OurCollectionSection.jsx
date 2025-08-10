@@ -36,11 +36,11 @@ const OurCollectionSection = () => {
 
         {/* Content positioned at bottom */}
         <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-8">
-          <div className="text-white">
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium mb-2 sm:mb-3 text-white">
+          <div className="text-white flex flex-col justify-center items-center gap-3">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium mb-2 sm:mb-3 text-center text-white">
               {item.title}
             </h3>
-            <button className="text-sm sm:text-base lg:text-lg text-white/90 hover:text-white transition-colors duration-300 font-light tracking-wide">
+            <button className="text-sm sm:text-base lg:text-lg text-white/90 hover:text-white transition-colors duration-300 font-light tracking-wide ">
               Shop Now
             </button>
           </div>
@@ -50,19 +50,12 @@ const OurCollectionSection = () => {
   };
 
   return (
-    <div
-      className="flex flex-col py-8 sm:py-12 lg:py-16 xl:py-20 px-4 sm:px-6 lg:px-8 xl:px-10 gap-6 sm:gap-8 lg:gap-12 xl:gap-14"
-      style={{ fontFamily: "var(--font-barlow)" }}
-    >
-      <h2
-        className="text-center text-primary font-normal tracking-tighter text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
-        style={{ fontFamily: "var(--font-barlow)" }}
-      >
+    <div className="flex font-barlow flex-col py-4 sm:py-6 lg:py-8 xl:py-10   gap-6 sm:gap-4 lg:gap-6 xl:gap-5 ">
+      <h2 className="text-center text-primary font-normal tracking-tighter text-70 ">
         Our Collections
       </h2>
 
-      {/* Responsive container with proper height constraints */}
-      <div className="w-full min-h-[500px] sm:min-h-[600px] md:min-h-[650px] lg:min-h-[800px] xl:min-h-[750px] overflow-hidden py-4">
+      <div className="w-full min-h-[500px] sm:min-h-[600px] md:min-h-[650px] lg:min-h-[800px] xl:min-h-[750px] overflow-hidden ">
         <Slider
           items={collections}
           itemsToShow={3}
