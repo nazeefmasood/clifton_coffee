@@ -75,7 +75,7 @@ const NewProductsSection = () => {
       <div className="flex flex-col xl:flex-row gap-6 lg:gap-8 xl:gap-12">
         {/* Collage Section */}
         <div className="flex-1 w-full">
-          <div className="h-80 sm:h-96 lg:h-[800px] xl:h-[800px] rounded-2xl lg:rounded-3xl overflow-hidden bg-gray-100">
+          <div className="h-80 sm:h-96 lg:h-[800px] xl:h-[800px] px-4 rounded-2xl lg:rounded-3xl overflow-hidden bg-gray-100">
             <Collage images={data[activeTab].collageImages} />
           </div>
         </div>

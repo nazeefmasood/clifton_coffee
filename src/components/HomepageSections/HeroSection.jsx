@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderSection from "./HeaderSection.jsx";
 import Button from "../reusable/Button.jsx";
-
+import Poster from "../../assets/images/header/coffee_2.jpg";
 const HeroSection = () => {
   return (
     <div
@@ -15,13 +15,12 @@ const HeroSection = () => {
         loop
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        poster=""
+        poster={Poster}
       >
         <source
           src="https://res.cloudinary.com/dqn2ot5wu/video/upload/v1754859954/bg_video_bhlwaw.mp4"
           type="video/mp4"
         />
-        
       </video>
 
       {/* Dark overlay for better text readability */}
