@@ -9,11 +9,12 @@ const HeroSection = () => {
       style={{ fontFamily: "var(--font-barlow)" }}
     >
       {/* Background Video */}
+
       <video
-        autoPlay
-        muted
-        loop
-        playsInline
+        autoPlay="autoplay"
+        loop="true"
+        muted="true"
+        playsInLine="playsinline"
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         poster={Poster}
       >
