@@ -21,8 +21,7 @@ const HeroSection = () => {
           src="https://res.cloudinary.com/dqn2ot5wu/video/upload/v1754859954/bg_video_bhlwaw.mp4"
           type="video/mp4"
         />
-        {/* Fallback for browsers that don't support video */}
-        <div className="absolute inset-0 bg-gray-900"></div>
+        
       </video>
 
       {/* Dark overlay for better text readability */}
