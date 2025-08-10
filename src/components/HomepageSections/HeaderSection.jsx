@@ -172,7 +172,7 @@ const HeaderSection = () => {
             {/* Logo - Centered */}
             <div className="flex-shrink-0 flex-grow xl:flex-grow-0 flex justify-between xl:justify-center">
               <div
-                className={`w-36 h-12 sm:w-44 sm:h-12 md:h-16 lg:w-56 lg:h-20 xl:w-56 xl:h-24 mt-0 lg:mt-5 overflow-hidden transition-all duration-300 ${
+                className={`w-36 h-12  sm:w-44 sm:h-12 md:h-16 lg:w-56 lg:h-20 xl:w-56 xl:h-24 mt-0 lg:mt-5 overflow-hidden transition-all duration-300 ${
                   isHeaderHovered ||
                   activeMenu !== null ||
                   activeRightMenu !== null ||
@@ -213,7 +213,9 @@ const HeaderSection = () => {
                           : "text-white hover:text-gray-200"
                       }`}
                     >
-                      <span className="font-normal text-22">{r_menu.title}</span>
+                      <span className="font-normal text-22">
+                        {r_menu.title}
+                      </span>
                       {r_menu.hasSubmenu && (
                         <ChevronDown
                           size={18}
@@ -459,11 +461,11 @@ const HeaderSection = () => {
           <div className="flex flex-col h-full">
             {/* Mobile Header */}
             <div className="flex items-center justify-between p-4 border-b">
-              <div className="w-32 h-8">
+              <div className="w-32 h-10">
                 <img
                   src={Logo}
                   alt="Clifton Coffee Roasters"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain invert"
                 />
               </div>
               <button

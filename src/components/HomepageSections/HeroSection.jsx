@@ -1,6 +1,5 @@
 import React from "react";
 import HeaderSection from "./HeaderSection.jsx";
-import BG_Video from "../../assets/videos/bg_video.mp4";
 import Button from "../reusable/Button.jsx";
 
 const HeroSection = () => {
@@ -18,14 +17,18 @@ const HeroSection = () => {
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         poster=""
       >
-        <source src={BG_Video} type="video/mp4" />
-      
+        <source
+          src="https://res.cloudinary.com/dqn2ot5wu/video/upload/v1754859954/bg_video_bhlwaw.mp4"
+          type="video/mp4"
+        />
+        {/* Fallback for browsers that don't support video */}
         <div className="absolute inset-0 bg-gray-900"></div>
       </video>
 
+      {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-[rgba(0,0,0,0.4)] sm:bg-opacity-70 lg:bg-opacity-75 z-10"></div>
 
-
+      {/* Header */}
       <div className="absolute top-0 left-0 w-full z-50">
         <HeaderSection />
       </div>
