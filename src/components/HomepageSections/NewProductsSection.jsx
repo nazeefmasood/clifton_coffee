@@ -176,7 +176,7 @@ const NewProductsSection = () => {
           </div>
         </div>
       </div>
-    </sec>
+    </section>
   );
 };
 

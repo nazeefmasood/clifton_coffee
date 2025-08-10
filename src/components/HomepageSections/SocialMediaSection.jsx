@@ -58,7 +58,7 @@ const SocialMediaSection = () => {
           }}
         />
       </div>
-    </se>
+    </section>
   );
 };
 

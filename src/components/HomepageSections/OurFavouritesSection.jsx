@@ -622,7 +622,7 @@ const OurFavouritesSection = () => {
           </div>
         </div>
       )}
-    </se>
+    </section>
   );
 };
 
