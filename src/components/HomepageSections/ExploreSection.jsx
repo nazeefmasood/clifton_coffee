@@ -67,7 +67,7 @@ const ExploreSection = () => {
         />
       </div>
 
-      <div className=" h-max  lg:h-[750px] xl:h-[900px] min-2xl:h-[800px] overflow-hidden">
+      <div className="h-max  lg:h-[750px] xl:h-[900px] min-2xl:h-[800px] overflow-hidden">
         <Slider
           items={items}
           itemsToShow={1}

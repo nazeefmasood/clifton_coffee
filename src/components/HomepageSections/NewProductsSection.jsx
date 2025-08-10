@@ -64,11 +64,8 @@ const NewProductsSection = () => {
       <div className="text-center space-y-4">
         <h2 className="font-normal text-gray-900 text-70 ">New Products</h2>
         <p
-          className="font-normal text-gray-600 max-w-2xl mx-auto"
-          style={{
-            fontSize: "var(--text-25)",
-            lineHeight: "1.4",
-          }}
+          className="font-normal text-gray-600 max-w-2xl mx-auto mb-10 text-25"
+        
         >
           Discover our premium coffee collections crafted for every taste!
         </p>
@@ -137,7 +134,7 @@ const NewProductsSection = () => {
                   <div className="group flex flex-col rounded-3xl overflow-hidden h-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
                     {/* Product Image with colored background */}
                     <div
-                      className={`relative w-full sm:h-32 lg:h-72 xl:h-91 overflow-hidden  flex items-center justify-center`}
+                      className={`relative w-full sm:h-32 lg:h-80 xl:h-91 overflow-hidden  flex items-center justify-center`}
                     >
                       <div className="relative w-full h-full ">
                         <img
@@ -154,34 +151,16 @@ const NewProductsSection = () => {
                       className={`flex-1 ${bgColor} p-4 sm:p-6 flex flex-col justify-between relative`}
                     >
                       <div className="space-y-3">
-                        <h3
-                          className="font-normal text-gray-900 text-center"
-                          style={{
-                            fontSize: "var(--text-25)",
-                            fontFamily: "var(--font-barlow)",
-                          }}
-                        >
+                        <h3 className="font-normal text-gray-900 text-center text-25">
                           {item.title}
                         </h3>
-                        <p
-                          className="font-normal text-gray-600 text-center leading-relaxed"
-                          style={{
-                            fontSize: "var(--text-14)",
-                            fontFamily: "var(--font-barlow)",
-                          }}
-                        >
+                        <p className="font-normal text-gray-600 text-center leading-relaxed text-14 lg:text-18">
                           {item.description}
                         </p>
                       </div>
 
                       <div className="mt-4 pt-4">
-                        <p
-                          className="font-semibold text-gray-900 text-center mb-4"
-                          style={{
-                            fontSize: "var(--text-18)",
-                            fontFamily: "var(--font-barlow)",
-                          }}
-                        >
+                        <p className="font-semibold text-gray-900 text-center mb-4 text-25">
                           £{item.price}
                         </p>
 
